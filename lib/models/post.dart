@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 
 class Task {
-  final String title;
+  final String teacherId;
   final String task;
   final String lessonId;
 
 
   Task({
     @required this.lessonId,
-    @required this.title,
+    @required this.teacherId,
     this.task,
 
   });
@@ -16,7 +16,7 @@ class Task {
   Map<String, dynamic> toMap() {
     return {
       'lessonId': lessonId,
-      'title': title,
+      'teacherId': teacherId,
       'task': task,
     };
   }
@@ -25,7 +25,7 @@ class Task {
     if (map == null) return null;
 
     return Task(
-      title: map['title'],
+      teacherId: map['teacherId'],
       task: map['task'],
       lessonId: map['lessonId'],
       

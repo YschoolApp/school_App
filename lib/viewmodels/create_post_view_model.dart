@@ -10,8 +10,8 @@ import 'package:school_app/viewmodels/base_model.dart';
 import 'package:flutter/foundation.dart';
 
 class CreateTaskViewModel extends BaseModel {
-
-  final TaskFireStoreService _fireStoreService = locator<TaskFireStoreService>();
+  final TaskFireStoreService _fireStoreService =
+      locator<TaskFireStoreService>();
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final ImageSelector _imageSelector = locator<ImageSelector>();
@@ -19,6 +19,7 @@ class CreateTaskViewModel extends BaseModel {
       locator<CloudStorageService>();
 
   File _selectedImage;
+
   File get selectedImage => _selectedImage;
 
   Task _edittingTask;
@@ -33,31 +34,26 @@ class CreateTaskViewModel extends BaseModel {
     }
   }
 
-  Future addTask({@required String title}) async {
+  Future addTask({@required String task}) async {
     setBusy(true);
 
     CloudStorageResult storageResult;
-
-    if (!_editting) {
-      storageResult = await _cloudStorageService.uploadImage(
-        imageToUpload: _selectedImage,
-        title: title,
-      );
-    }
 
     var result;
 
     if (!_editting) {
       result = await _fireStoreService.addTask(Task(
-        title: title,
+        task: task,
         lessonId: "",
-       // imageUrl: storageResult.imageUrl,
-       // imageFileName: storageResult.imageFileName,
+        teacherId: currentUser.id,
+        // imageUrl: storageResult.imageUrl,
+        // imageFileName: storageResult.imageFileName,
       ));
     } else {
       result = await _fireStoreService.updateTask(Task(
-        title: title,
+        task: task,
         lessonId: "",
+        teacherId: currentUser.id,
         //documentId: _edittingTask.documentId,
         //imageUrl: _edittingPost.imageUrl,
         //imageFileName: _edittingPost.imageFileName,

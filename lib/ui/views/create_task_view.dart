@@ -5,19 +5,19 @@ import 'package:school_app/ui/widgets/input_field.dart';
 import 'package:school_app/viewmodels/create_post_view_model.dart';
 import 'package:stacked/stacked.dart';
 
-
 class CreateTaskView extends StatelessWidget {
-  final titleController = TextEditingController();
+  final taskController = TextEditingController();
   final Task edittingTask;
+
   CreateTaskView({Key key, this.edittingTask}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CreateTaskViewModel>.reactive(
-      viewModelBuilder:()=> CreateTaskViewModel(),
+      viewModelBuilder: () => CreateTaskViewModel(),
       onModelReady: (model) {
         // update the text in the controller
-        titleController.text = edittingTask?.title ?? '';
+        taskController.text = edittingTask?.task ?? '';
 
         model.setEdittingTask(edittingTask);
       },
@@ -30,7 +30,7 @@ class CreateTaskView extends StatelessWidget {
                   ),
             onPressed: () {
               if (!model.busy) {
-                model.addTask(title: titleController.text);
+                model.addTask(task: taskController.text);
               }
             },
             backgroundColor:
@@ -43,14 +43,14 @@ class CreateTaskView extends StatelessWidget {
               children: <Widget>[
                 verticalSpace(40),
                 Text(
-                  'Create Post',
+                  'Create Task',
                   style: TextStyle(fontSize: 26),
                 ),
                 verticalSpaceMedium,
-                InputField(
-                  placeholder: 'Title',
-                  controller: titleController,
-                ),
+                // InputField(
+                //   placeholder: 'Title',
+                //   controller: titleController,
+                // ),titleController
                 verticalSpaceMedium,
                 Text('Task'),
                 verticalSpaceSmall,
@@ -58,21 +58,24 @@ class CreateTaskView extends StatelessWidget {
                   // When we tap we call selectImage
                   onTap: () => model.selectImage(),
                   child: Container(
-                    height: 250,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(10)),
-                    alignment: Alignment.center,
-                    // If the selected image is null we show "Tap to add post image"
-                    child: model.selectedImage == null
-                        ? Text(
-                            'Tap to add post image',
-                            style: TextStyle(color: Colors.grey[400]),
-                          )
-                        // If we have a selected image we want to show it
-                        : Image.file(model.selectedImage),
+                    child: TextField(
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 10,
+                      controller: taskController,
+
+                    ),
                   ),
-                )
+                ),
+                RaisedButton(
+                    child: Text("Send",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        )),
+                    onPressed: (){
+                      print(taskController.text);
+                      model.addTask(task: taskController.text);
+                    })
               ],
             ),
           )),

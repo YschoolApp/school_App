@@ -58,7 +58,7 @@ class TaskFireStoreService {
       if (tasksSnapshot.docs.isNotEmpty) {
         var tasks = tasksSnapshot.docs
             .map((snapshot) => Task.fromMap(snapshot.data(), snapshot.id))
-            .where((mappedItem) => mappedItem.title != null)
+            .where((mappedItem) => mappedItem.task != null)
             .toList();
 
         // #8: Check if the page exists or not
@@ -116,7 +116,7 @@ class TaskFireStoreService {
       if (taskDocumentSnapshot.docs.isNotEmpty) {
         return taskDocumentSnapshot.docs
             .map((snapshot) => Task.fromMap(snapshot.data(), snapshot.id))
-            .where((mappedItem) => mappedItem.title != null)
+            .where((mappedItem) => mappedItem.task != null)
             .toList();
       }
     } catch (e) {

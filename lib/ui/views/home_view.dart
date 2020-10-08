@@ -1,7 +1,7 @@
 import 'package:school_app/locator.dart';
 import 'package:school_app/models/post.dart';
 import 'package:school_app/services/task_fire_store_services.dart';
-import 'package:school_app/ui/widgets/post_item.dart';
+import 'package:school_app/ui/widgets/task_item.dart';
 import 'package:school_app/viewmodels/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

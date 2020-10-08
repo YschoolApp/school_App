@@ -24,7 +24,7 @@ class TaskItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
 
-                Text(task.title),
+                Text(task.task),
               ],
             ),
           )),
