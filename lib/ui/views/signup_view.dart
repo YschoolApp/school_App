@@ -62,7 +62,7 @@ class SignUpView extends StatelessWidget {
                 ),
                 verticalSpaceSmall,
                 ExpansionList<String>(
-                    items: ['Teacher', 'Parent', 'Student'],
+                    items: ['Parent', 'Student'],
                     title: model.selectedRole,
                     onItemSelected: model.setSelectedRole),
                 verticalSpaceMedium,

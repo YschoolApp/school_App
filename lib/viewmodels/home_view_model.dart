@@ -4,56 +4,56 @@ import 'package:school_app/models/post.dart';
 import 'package:school_app/services/cloud_storage_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
-import 'package:school_app/services/post_fire_store_services.dart';
+import 'package:school_app/services/task_fire_store_services.dart';
 import 'package:school_app/viewmodels/base_model.dart';
 
 import '../routers/route_names.dart';
 
 class HomeViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
-  final PostFireStoreService _firestoreService =
-      locator<PostFireStoreService>();
+  final TaskFireStoreService _firestoreService =
+      locator<TaskFireStoreService>();
   final DialogService _dialogService = locator<DialogService>();
   final CloudStorageService _cloudStorageService =
       locator<CloudStorageService>();
 
 
-  Stream<List<Post>> stream;
+  Stream<List<Task>> stream;
 
-  void listenToPosts() {
+  void listenToTasks() {
 
     setBusy(true);
 
-    _firestoreService.listenToPostsRealTime();
+    _firestoreService.listenToTasksRealTime();
 
-    stream = _firestoreService.postsController.stream;
+    stream = _firestoreService.tasksController.stream;
 
     setBusy(false);
 //    });
   }
 
-  Future deletePost(Post postToDelete) async {
+  Future deleteTask(Task taskToDelete) async {
     var dialogResponse = await _dialogService.showConfirmationDialog(
       title: 'Are you sure?',
-      description: 'Do you really want to delete the post?',
+      description: 'Do you really want to delete the task?',
       confirmationTitle: 'Yes',
       cancelTitle: 'No',
     );
 
     if (dialogResponse.confirmed) {
       setBusy(true);
-      await _firestoreService.deletePost(postToDelete.documentId);
-      // Delete the image after the post is deleted
-      await _cloudStorageService.deleteImage(postToDelete.imageFileName);
+      //await _firestoreService.deleteTask(taskToDelete.documentId);
+      // Delete the image after the task is deleted
+     // await _cloudStorageService.deleteImage(taskToDelete.imageFileName);
       setBusy(false);
     }
   }
 
   Future navigateToCreateView() async {
-    await _navigationService.navigateTo(CreatePostViewRoute);
+    await _navigationService.navigateTo(CreateTaskViewRoute);
   }
 
-  void editPost(int index) {
+  void editTask(int index) {
 //    _navigationService.navigateTo(CreatePostViewRoute,
 //        arguments: _posts[index]);
   }

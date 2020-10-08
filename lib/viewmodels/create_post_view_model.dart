@@ -4,14 +4,14 @@ import 'package:school_app/models/post.dart';
 import 'package:school_app/services/cloud_storage_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
-import 'package:school_app/services/post_fire_store_services.dart';
+import 'package:school_app/services/task_fire_store_services.dart';
 import 'package:school_app/utils/image_selector.dart';
 import 'package:school_app/viewmodels/base_model.dart';
 import 'package:flutter/foundation.dart';
 
-class CreatePostViewModel extends BaseModel {
+class CreateTaskViewModel extends BaseModel {
 
-  final PostFireStoreService _fireStoreService = locator<PostFireStoreService>();
+  final TaskFireStoreService _fireStoreService = locator<TaskFireStoreService>();
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final ImageSelector _imageSelector = locator<ImageSelector>();
@@ -21,9 +21,9 @@ class CreatePostViewModel extends BaseModel {
   File _selectedImage;
   File get selectedImage => _selectedImage;
 
-  Post _edittingPost;
+  Task _edittingTask;
 
-  bool get _editting => _edittingPost != null;
+  bool get _editting => _edittingTask != null;
 
   Future selectImage() async {
     var tempImage = await _imageSelector.selectImage();
@@ -33,7 +33,7 @@ class CreatePostViewModel extends BaseModel {
     }
   }
 
-  Future addPost({@required String title}) async {
+  Future addTask({@required String title}) async {
     setBusy(true);
 
     CloudStorageResult storageResult;
@@ -48,19 +48,19 @@ class CreatePostViewModel extends BaseModel {
     var result;
 
     if (!_editting) {
-      result = await _fireStoreService.addPost(Post(
+      result = await _fireStoreService.addTask(Task(
         title: title,
-        userId: currentUser.id,
-        imageUrl: storageResult.imageUrl,
-        imageFileName: storageResult.imageFileName,
+        lessonId: "",
+       // imageUrl: storageResult.imageUrl,
+       // imageFileName: storageResult.imageFileName,
       ));
     } else {
-      result = await _fireStoreService.updatePost(Post(
+      result = await _fireStoreService.updateTask(Task(
         title: title,
-        userId: _edittingPost.userId,
-        documentId: _edittingPost.documentId,
-        imageUrl: _edittingPost.imageUrl,
-        imageFileName: _edittingPost.imageFileName,
+        lessonId: "",
+        //documentId: _edittingTask.documentId,
+        //imageUrl: _edittingPost.imageUrl,
+        //imageFileName: _edittingPost.imageFileName,
       ));
     }
 
@@ -68,20 +68,20 @@ class CreatePostViewModel extends BaseModel {
 
     if (result is String) {
       await _dialogService.showDialog(
-        title: 'Cound not create post',
+        title: 'Cound not create task',
         description: result,
       );
     } else {
       await _dialogService.showDialog(
         title: 'Post successfully Added',
-        description: 'Your post has been created',
+        description: 'Your task has been created',
       );
     }
 
     _navigationService.pop();
   }
 
-  void setEdittingPost(Post edittingPost) {
-    _edittingPost = edittingPost;
+  void setEdittingTask(Task edittingTask) {
+    _edittingTask = edittingTask;
   }
 }

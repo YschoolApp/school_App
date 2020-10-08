@@ -6,20 +6,20 @@ import 'package:school_app/viewmodels/create_post_view_model.dart';
 import 'package:stacked/stacked.dart';
 
 
-class CreatePostView extends StatelessWidget {
+class CreateTaskView extends StatelessWidget {
   final titleController = TextEditingController();
-  final Post edittingPost;
-  CreatePostView({Key key, this.edittingPost}) : super(key: key);
+  final Task edittingTask;
+  CreateTaskView({Key key, this.edittingTask}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CreatePostViewModel>.reactive(
-      viewModelBuilder:()=> CreatePostViewModel(),
+    return ViewModelBuilder<CreateTaskViewModel>.reactive(
+      viewModelBuilder:()=> CreateTaskViewModel(),
       onModelReady: (model) {
         // update the text in the controller
-        titleController.text = edittingPost?.title ?? '';
+        titleController.text = edittingTask?.title ?? '';
 
-        model.setEdittingPost(edittingPost);
+        model.setEdittingTask(edittingTask);
       },
       builder: (context, model, child) => Scaffold(
           floatingActionButton: FloatingActionButton(
@@ -30,7 +30,7 @@ class CreatePostView extends StatelessWidget {
                   ),
             onPressed: () {
               if (!model.busy) {
-                model.addPost(title: titleController.text);
+                model.addTask(title: titleController.text);
               }
             },
             backgroundColor:
@@ -52,7 +52,7 @@ class CreatePostView extends StatelessWidget {
                   controller: titleController,
                 ),
                 verticalSpaceMedium,
-                Text('Post Image'),
+                Text('Task'),
                 verticalSpaceSmall,
                 GestureDetector(
                   // When we tap we call selectImage

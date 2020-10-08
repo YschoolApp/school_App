@@ -1,38 +1,34 @@
 import 'package:flutter/foundation.dart';
 
-class Post {
+class Task {
   final String title;
-  final String imageUrl;
-  final String userId;
-  final String documentId;
-  final String imageFileName;
+  final String task;
+  final String lessonId;
 
-  Post({
-    @required this.userId,
+
+  Task({
+    @required this.lessonId,
     @required this.title,
-    this.documentId,
-    this.imageUrl,
-    this.imageFileName,
+    this.task,
+
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'userId': userId,
+      'lessonId': lessonId,
       'title': title,
-      'imageUrl': imageUrl,
-      'imageFileName': imageFileName,
+      'task': task,
     };
   }
 
-  static Post fromMap(Map<String, dynamic> map, String documentId) {
+  static Task fromMap(Map<String, dynamic> map, String documentId) {
     if (map == null) return null;
 
-    return Post(
+    return Task(
       title: map['title'],
-      imageUrl: map['imageUrl'],
-      userId: map['userId'],
-      imageFileName: map['imageFileName'],
-      documentId: documentId,
+      task: map['task'],
+      lessonId: map['lessonId'],
+      
     );
   }
 }

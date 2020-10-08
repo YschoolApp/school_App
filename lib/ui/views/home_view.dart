@@ -1,6 +1,6 @@
 import 'package:school_app/locator.dart';
 import 'package:school_app/models/post.dart';
-import 'package:school_app/services/post_fire_store_services.dart';
+import 'package:school_app/services/task_fire_store_services.dart';
 import 'package:school_app/ui/widgets/post_item.dart';
 import 'package:school_app/viewmodels/home_view_model.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +24,8 @@ class _HomeViewState extends State<HomeView> {
       if (scrollController.position.maxScrollExtent ==
           scrollController.offset) {
         print('//// has more is ' +
-            locator<PostFireStoreService>().hasMorePosts.toString());
-        locator<PostFireStoreService>().requestMoreData();
+            locator<TaskFireStoreService>().hasMoreTasks.toString());
+        locator<TaskFireStoreService>().requestMoreData();
       }
     });
   }
@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
         viewModelBuilder: () => HomeViewModel(),
-        onModelReady: (model) => model.listenToPosts(),
+        onModelReady: (model) => model.listenToTasks(),
         builder: (context, model, child) => Scaffold(
               backgroundColor: Colors.white,
               floatingActionButton: FloatingActionButton(
@@ -66,18 +66,18 @@ class _HomeViewState extends State<HomeView> {
                         itemCount: _snapshot.data.length + 1,
                         itemBuilder: (BuildContext _context, int index) {
                           if (index < _snapshot.data.length) {
-                            Post post = _snapshot.data[index];
+                            Task task = _snapshot.data[index];
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
-                                onTap: () => model.editPost(index),
-                                child: PostItem(
-                                  post: post,
-                                  onDeleteItem: () => model.deletePost(post),
+                                onTap: () => model.editTask(index),
+                                child: TaskItem(
+                                  task: task,
+                                  onDeleteItem: () => model.deleteTask(task),
                                 ),
                               ),
                             );
-                          } else if (locator<PostFireStoreService>().hasMorePosts) {
+                          } else if (locator<TaskFireStoreService>().hasMoreTasks) {
                             return Padding(
                               padding: EdgeInsets.symmetric(horizontal: 32.0),
                               child: Center(child: CircularProgressIndicator()),
