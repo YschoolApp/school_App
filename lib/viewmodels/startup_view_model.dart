@@ -1,3 +1,4 @@
+import 'package:school_app/all_constants/field_name_constant.dart';
 import 'package:school_app/locator.dart';
 import 'package:school_app/services/authentication_service.dart';
 import 'package:school_app/services/navigation_service.dart';
@@ -18,8 +19,10 @@ class StartUpViewModel extends BaseModel {
     await _pushNotificationService.initialise();
     var hasLoggedInUser = await _authenticationService.isUserLoggedIn();
     await Future.delayed(Duration(seconds: 4));
+
     if (hasLoggedInUser) {
-      _navigationService.navigateTo(HomeViewRoute);
+      _navigationService
+          .routeToUserMainScreen(_authenticationService.userRole());
     } else {
       _navigationService.navigateTo(LoginViewRoute);
     }

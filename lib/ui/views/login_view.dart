@@ -32,12 +32,12 @@ class LoginView extends StatelessWidget {
                       assetPath: 'assets/images/login.svg',),
                   ),
                   InputField(
-                    placeholder: 'Email',
+                    placeholder: kfEmail,
                     controller: emailController,
                   ),
                   verticalSpaceSmall,
                   InputField(
-                    placeholder: 'Password',
+                    placeholder: kfPassword,
                     password: true,
                     controller: passwordController,
                   ),
@@ -47,7 +47,7 @@ class LoginView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       BusyButton(
-                        title: 'Login',
+                        title: kfLogIn,
                         busy: model.busy,
                         onPressed: () {
                           model.login(
@@ -60,7 +60,7 @@ class LoginView extends StatelessWidget {
                   ),
                   verticalSpaceMedium,
                   TextLink(
-                    'Create an Account if you\'re new.',
+                    kfNotHaveAccount,
                     onPressed: () {
                       model.navigateToSignUp();
                     },

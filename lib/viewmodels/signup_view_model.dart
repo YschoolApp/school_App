@@ -1,10 +1,10 @@
+import 'package:school_app/all_constants/field_name_constant.dart';
 import 'package:school_app/locator.dart';
 import 'package:school_app/models/user_model.dart';
 import 'package:school_app/services/authentication_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
 import 'package:flutter/foundation.dart';
-import '../routers/route_names.dart';
 import 'base_model.dart';
 
 class SignUpViewModel extends BaseModel {
@@ -29,9 +29,9 @@ class SignUpViewModel extends BaseModel {
     setBusy(true);
 
     var result = await _authenticationService.signUpWithEmail(
-        passedUser: newUser,
-        password: password,
-       );
+      passedUser: newUser,
+      password: password,
+    );
 
     setBusy(false);
 
@@ -39,7 +39,7 @@ class SignUpViewModel extends BaseModel {
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateWithReplacementTo(HomeViewRoute);
+       _navigationService.routeToUserMainScreen(_authenticationService.userRole());
       } else {
         await _dialogService.showDialog(
           title: 'Sign Up Failure',

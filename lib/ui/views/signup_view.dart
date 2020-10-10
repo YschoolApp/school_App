@@ -37,32 +37,32 @@ class SignUpView extends StatelessWidget {
                 ),
                 verticalSpaceSmall,
                 InputField(
-                  placeholder: 'Full Name',
+                  placeholder: kfName,
                   controller: fullNameController,
                 ),
                 // verticalSpaceSmall,
                 InputField(
-                  placeholder: 'Email',
+                  placeholder: kfEmail,
                   controller: emailController,
                 ),
                 // verticalSpaceSmall,
                 InputField(
-                  placeholder: 'Password',
+                  placeholder: kfPassword,
                   password: true,
                   controller: passwordController,
                   additionalNote: 'Password has to be a minimum of 6 characters.',
                 ),
                 InputField(
-                  placeholder: 'phone number',
+                  placeholder: kfPhoneNum,
                   controller: phoneController,
                 ),
                 InputField(
-                  placeholder: 'Address',
+                  placeholder: kfAddress,
                   controller: addressController,
                 ),
                 verticalSpaceSmall,
                 ExpansionList<String>(
-                    items: ['Parent', 'Student'],
+                    items: [kfTeacher,kfParent, kfStudent],
                     title: model.selectedRole,
                     onItemSelected: model.setSelectedRole),
                 verticalSpaceMedium,
@@ -71,7 +71,7 @@ class SignUpView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     BusyButton(
-                      title: 'Sign Up',
+                      title: kfSignUp,
                       busy: model.busy,
                       onPressed: () {
                         model.signUp(
@@ -80,6 +80,7 @@ class SignUpView extends StatelessWidget {
                             userFullName: fullNameController.text,
                             userAddress: addressController.text,
                             userPhone: phoneController.text,
+                            userRole: model.selectedRole,
                           ),
                           password: passwordController.text,
                         );

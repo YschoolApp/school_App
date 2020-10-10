@@ -4,12 +4,12 @@ import 'package:school_app/models/user_model.dart';
 import '../locator.dart';
 import 'firestore_service.dart';
 
-
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FireStoreService _fireStoreService = locator<FireStoreService>();
 
   MyUser _currentUser;
+
   MyUser get currentUser => _currentUser;
 
   Future loginWithEmail({
@@ -31,7 +31,6 @@ class AuthenticationService {
   Future signUpWithEmail({
     @required MyUser passedUser,
     @required String password,
-
   }) async {
     try {
       var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -40,16 +39,16 @@ class AuthenticationService {
       );
 
       // create a new user profile on firestore
-      _currentUser = MyUser(
+      await _fireStoreService.createUser(MyUser(
         id: authResult.user.uid,
         userEmail: passedUser.userEmail,
         userFullName: passedUser.userFullName,
         userAddress: passedUser.userAddress,
         userPhone: passedUser.userPhone,
         userRole: passedUser.userRole,
-      );
+      ));
 
-      await _fireStoreService.createUser(_currentUser);
+      _currentUser = await _fireStoreService.getUser(_firebaseAuth.currentUser.uid);
 
       return authResult.user != null;
     } catch (e) {
@@ -58,7 +57,7 @@ class AuthenticationService {
   }
 
   Future<bool> isUserLoggedIn() async {
-    var user =  _firebaseAuth.currentUser;
+    var user = _firebaseAuth.currentUser;
     await _populateCurrentUser(user);
     return user != null;
   }
@@ -68,4 +67,12 @@ class AuthenticationService {
       _currentUser = await _fireStoreService.getUser(user.uid);
     }
   }
+
+  String userRole()  {
+    return _currentUser?.userRole;
+  }
+
+
+
+
 }
