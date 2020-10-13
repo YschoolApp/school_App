@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/models/post.dart';
 import 'package:school_app/ui/shared/ui_helpers.dart';
-import 'package:school_app/viewmodels/create_post_view_model.dart';
+import 'package:school_app/viewmodels/create_task_view_model.dart';
 import 'package:stacked/stacked.dart';
 
 class CreateTaskView extends StatelessWidget {

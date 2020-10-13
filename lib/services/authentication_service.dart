@@ -38,7 +38,7 @@ class AuthenticationService {
         password: password,
       );
 
-      // create a new user profile on firestore
+      // create a new user profile on fireStore
       await _fireStoreService.createUser(MyUser(
         id: authResult.user.uid,
         userEmail: passedUser.userEmail,
@@ -48,22 +48,26 @@ class AuthenticationService {
         userRole: passedUser.userRole,
       ));
 
-      _currentUser = await _fireStoreService.getUser(_firebaseAuth.currentUser.uid);
+     await _populateCurrentUser(authResult.user);
 
       return authResult.user != null;
     } catch (e) {
-      return e.message;
+      return e.toString();
     }
   }
 
   Future<bool> isUserLoggedIn() async {
     var user = _firebaseAuth.currentUser;
+    print('============isUserLoggedIn() ');
+    print(user.toString());
     await _populateCurrentUser(user);
     return user != null;
   }
 
   Future _populateCurrentUser(User user) async {
     if (user != null) {
+      print('======= _populateCurrentUser');
+      print(user.uid);
       _currentUser = await _fireStoreService.getUser(user.uid);
     }
   }
@@ -71,8 +75,5 @@ class AuthenticationService {
   String userRole()  {
     return _currentUser?.userRole;
   }
-
-
-
 
 }

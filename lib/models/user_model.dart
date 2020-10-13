@@ -15,7 +15,9 @@ class MyUser {
     this.isActivate = false,
     this.userPhone});
 
-  MyUser.fromJson(Map<String, dynamic> data)
+  //when using real time it does not return Map<String, dynamic>
+  //so we have to pass any Map
+  MyUser.fromJson(Map data)
       : id = data['id'],
         userFullName = data['userFullName'],
         userEmail = data['userEmail'],
@@ -23,6 +25,15 @@ class MyUser {
         userAddress = data['userAddress'],
         isActivate = data['isActivate'],
         userPhone = data['userPhone'];
+
+  // MyUser.fromJson(Map<String, dynamic> data)
+  //     : id = data['id'],
+  //       userFullName = data['userFullName'],
+  //       userEmail = data['userEmail'],
+  //       userRole = data['userRole'],
+  //       userAddress = data['userAddress'],
+  //       isActivate = data['isActivate'],
+  //       userPhone = data['userPhone'];
 
   Map<String, dynamic> toJson() {
     return {
