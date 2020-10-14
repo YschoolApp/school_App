@@ -2,7 +2,7 @@ const String kfAppTitle = "app_title";
 
 const String kfCompleteInfoTitle = "complete_info_title";
 
-const String kfName = "'Full Name'";
+const String kfName = "Full Name";
 const String kfPersonalInfo = "personal_information";
 const String kfSignUp = "Sign Up";
 const String kfLogIn = "Log in";
