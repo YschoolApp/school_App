@@ -44,6 +44,7 @@ class SignUpView extends StatelessWidget {
                 InputField(
                   placeholder: kfEmail,
                   controller: emailController,
+                  textInputType: TextInputType.emailAddress,
                 ),
                 // verticalSpaceSmall,
                 InputField(
