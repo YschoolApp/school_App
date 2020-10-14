@@ -58,6 +58,9 @@ class HomeViewModel extends BaseModel {
     await _navigationService.navigateTo(CreateTaskViewRoute);
   }
 
+  Future navigateToSendClaimView() async {
+    await _navigationService.navigateTo(SendClaimViewRoute);
+  }
   void editTask(int index) {
 //    _navigationService.navigateTo(CreatePostViewRoute,
 //        arguments: _posts[index]);

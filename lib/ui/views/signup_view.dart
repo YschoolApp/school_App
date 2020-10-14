@@ -39,11 +39,13 @@ class SignUpView extends StatelessWidget {
                 InputField(
                   placeholder: kfName,
                   controller: fullNameController,
+                  textInputType: TextInputType.name,
                 ),
                 // verticalSpaceSmall,
                 InputField(
                   placeholder: kfEmail,
                   controller: emailController,
+                  textInputType: TextInputType.emailAddress,
                 ),
                 // verticalSpaceSmall,
                 InputField(
@@ -55,10 +57,12 @@ class SignUpView extends StatelessWidget {
                 InputField(
                   placeholder: kfPhoneNum,
                   controller: phoneController,
+                  textInputType: TextInputType.phone,
                 ),
                 InputField(
                   placeholder: kfAddress,
                   controller: addressController,
+
                 ),
                 verticalSpaceSmall,
                 ExpansionList<String>(

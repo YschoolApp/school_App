@@ -26,15 +26,15 @@ class NavigationService {
     switch (userRole) {
       case kfParent:
       //TODO route to Parent main screen
-        navigateWithReplacementTo(HomeViewRoute);
+        navigateWithReplacementTo(ParentHomeViewRoute);
         break;
       case kfStudent:
       //TODO route to Student main screen
-        navigateWithReplacementTo(HomeViewRoute);
+        navigateWithReplacementTo(StudentHomeViewRoute);
         break;
       case kfTeacher:
       //TODO route to Teacher main screen
-        navigateWithReplacementTo(HomeViewRoute);
+        navigateWithReplacementTo(TeacherHomeViewRoute);
         break;
     }
   }
