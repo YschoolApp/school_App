@@ -1,4 +1,3 @@
-import 'package:school_app/all_constants/field_name_constant.dart';
 import 'package:school_app/locator.dart';
 import 'package:school_app/services/authentication_service.dart';
 import 'package:school_app/services/navigation_service.dart';

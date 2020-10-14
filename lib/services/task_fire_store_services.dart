@@ -1,7 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
+
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
+
 import 'package:flutter/services.dart';
 import 'package:school_app/models/task.dart';
 import '../models/task.dart';
@@ -12,7 +13,8 @@ class TaskFireStoreService {
 
   FirebaseDatabase database;
   DatabaseReference _tasksCollectionReference;
-  Query _query;
+
+  // Query _query;
 
   TaskFireStoreService() {
     database = FirebaseDatabase.instance;
@@ -22,8 +24,7 @@ class TaskFireStoreService {
         FirebaseDatabase.instance.reference().child('tasks');
   }
 
-
-  Query get query => _query = _tasksCollectionReference;
+  Query query() => _tasksCollectionReference;
 
   // FirebaseDatabase.instance
   //     .reference()

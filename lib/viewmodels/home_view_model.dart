@@ -1,26 +1,27 @@
 import 'dart:async';
 import 'package:school_app/locator.dart';
 import 'package:school_app/models/task.dart';
-import 'package:school_app/services/cloud_storage_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
 import 'package:school_app/services/task_fire_store_services.dart';
 import 'package:school_app/viewmodels/base_model.dart';
-
 import '../routers/route_names.dart';
 import 'package:firebase_database/firebase_database.dart';
+
+
 class HomeViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final TaskFireStoreService _firestoreService =
-      locator<TaskFireStoreService>();
+  locator<TaskFireStoreService>();
   final DialogService _dialogService = locator<DialogService>();
-  final CloudStorageService _cloudStorageService =
-      locator<CloudStorageService>();
+
+  // final CloudStorageService _cloudStorageService =
+  // locator<CloudStorageService>();
 
   Query query;
 
   getQuery() {
-    query = _firestoreService.query;
+    query = _firestoreService.query();
   }
 
   // Stream<List<Task>> stream;
@@ -61,6 +62,7 @@ class HomeViewModel extends BaseModel {
   Future navigateToSendClaimView() async {
     await _navigationService.navigateTo(SendClaimViewRoute);
   }
+
   void editTask(int index) {
 //    _navigationService.navigateTo(CreatePostViewRoute,
 //        arguments: _posts[index]);

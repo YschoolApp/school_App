@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:school_app/locator.dart';
 import 'package:school_app/models/task.dart';
-import 'package:school_app/services/cloud_storage_service.dart';
+// import 'package:school_app/services/cloud_storage_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
 import 'package:school_app/services/task_fire_store_services.dart';
@@ -15,8 +15,8 @@ class CreateTaskViewModel extends BaseModel {
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final ImageSelector _imageSelector = locator<ImageSelector>();
-  final CloudStorageService _cloudStorageService =
-      locator<CloudStorageService>();
+  // final CloudStorageService _cloudStorageService =
+  //     locator<CloudStorageService>();
 
   File _selectedImage;
 
@@ -37,7 +37,7 @@ class CreateTaskViewModel extends BaseModel {
   Future addTask({@required String task}) async {
     setBusy(true);
 
-    CloudStorageResult storageResult;
+    // CloudStorageResult storageResult;
 
     var result;
 

@@ -1,13 +1,11 @@
 import 'dart:io';
 import 'package:school_app/locator.dart';
 import 'package:school_app/models/claim.dart';
-import 'package:school_app/services/cloud_storage_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
 import 'package:school_app/services/claim_fire_store_services.dart';
 import 'package:school_app/utils/image_selector.dart';
 import 'package:school_app/viewmodels/base_model.dart';
-import 'package:flutter/foundation.dart';
 
 class CreateClaimViewModel extends BaseModel {
   final ClaimFireStoreService _fireStoreService =
@@ -15,8 +13,8 @@ class CreateClaimViewModel extends BaseModel {
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final ImageSelector _imageSelector = locator<ImageSelector>();
-  final CloudStorageService _cloudStorageService =
-  locator<CloudStorageService>();
+  // final CloudStorageService _cloudStorageService =
+  // locator<CloudStorageService>();
 
   File _selectedImage;
 
@@ -37,7 +35,7 @@ class CreateClaimViewModel extends BaseModel {
   Future addClaim( String title,  String claim) async {
     setBusy(true);
 
-    CloudStorageResult storageResult;
+    // CloudStorageResult storageResult;
 
     var result;
 

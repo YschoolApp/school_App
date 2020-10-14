@@ -1,4 +1,4 @@
-import 'package:school_app/models/post.dart';
+import 'package:school_app/models/task.dart';
 import 'package:school_app/ui/views/create_task_view.dart';
 import 'package:school_app/ui/views/teacher_home_view.dart';
 import 'package:school_app/ui/views/student_home_view.dart';
@@ -6,7 +6,6 @@ import 'package:school_app/ui/views/parent_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:school_app/ui/views/login_view.dart';
 import 'package:school_app/ui/views/signup_view.dart';
-
 import 'route_names.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
