@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../locator.dart';
 
-class StudentHomeView extends StatefulWidget {
-  const StudentHomeView({Key key}) : super(key: key);
+class ParentHomeView extends StatefulWidget {
+  const ParentHomeView({Key key}) : super(key: key);
 
   @override
-  _StudentHomeViewState createState() => _StudentHomeViewState();
+  _ParentHomeViewState createState() => _ParentHomeViewState();
 }
 
-class _StudentHomeViewState extends State<StudentHomeView> {
+class _ParentHomeViewState extends State<ParentHomeView> {
   final scrollController = ScrollController();
 
   @override
@@ -85,7 +85,7 @@ class _StudentHomeViewState extends State<StudentHomeView> {
                       } else {
                         return Padding(
                           padding: EdgeInsets.symmetric(vertical: 32.0),
-                          child: Center(child: Text('no more claim')),
+                          child: Center(child: Text('no more item')),
                         );
                       }
                     },
