@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:school_app/locator.dart';
-import 'package:school_app/models/post.dart';
+import 'package:school_app/models/task.dart';
 import 'package:school_app/services/cloud_storage_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
@@ -43,7 +43,7 @@ class CreateTaskViewModel extends BaseModel {
 
     if (!_editting) {
       result = await _fireStoreService.addTask(Task(
-        task: task,
+        taskContent: task,
         lessonId: "",
         teacherId: currentUser.id,
         // imageUrl: storageResult.imageUrl,
@@ -51,7 +51,7 @@ class CreateTaskViewModel extends BaseModel {
       ));
     } else {
       result = await _fireStoreService.updateTask(Task(
-        task: task,
+        taskContent: task,
         lessonId: "",
         teacherId: currentUser.id,
         //documentId: _edittingTask.documentId,

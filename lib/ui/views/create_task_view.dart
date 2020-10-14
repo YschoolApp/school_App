@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_app/models/post.dart';
+import 'package:school_app/models/task.dart';
 import 'package:school_app/ui/shared/ui_helpers.dart';
 import 'package:school_app/viewmodels/create_task_view_model.dart';
 import 'package:stacked/stacked.dart';
@@ -16,7 +16,7 @@ class CreateTaskView extends StatelessWidget {
       viewModelBuilder: () => CreateTaskViewModel(),
       onModelReady: (model) {
         // update the text in the controller
-        taskController.text = edittingTask?.task ?? '';
+        taskController.text = edittingTask?.taskContent ?? '';
 
         model.setEdittingTask(edittingTask);
       },
@@ -65,16 +65,6 @@ class CreateTaskView extends StatelessWidget {
                     ),
                   ),
                 ),
-                RaisedButton(
-                    child: Text("Send",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        )),
-                    onPressed: (){
-                      print(taskController.text);
-                      model.addTask(task: taskController.text);
-                    })
               ],
             ),
           )),

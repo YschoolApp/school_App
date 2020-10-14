@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/services.dart';
 import 'package:school_app/models/user_model.dart';
 
-class FireStoreService {
+class UserFireStoreService {
 
   // final CollectionReference _usersCollectionReference =
   // FirebaseFirestore.instance.collection('users');
@@ -11,13 +11,14 @@ class FireStoreService {
   FirebaseDatabase database;
   DatabaseReference _usersCollectionReference;
 
-  FireStoreService() {
+  UserFireStoreService() {
     database = FirebaseDatabase.instance;
     database.setPersistenceEnabled(true);
     // database.setPersistenceCacheSizeBytes(10000000);
     _usersCollectionReference =
         FirebaseDatabase.instance.reference().child('users');
     _usersCollectionReference.keepSynced(true);
+
   }
 
   Future createUser(MyUser user) async {

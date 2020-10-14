@@ -1,11 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:school_app/models/post.dart';
 import 'package:flutter/material.dart';
+import 'package:school_app/models/task.dart';
 
-class TaskItem extends StatelessWidget {
+class TaskItemTemplate extends StatelessWidget {
   final Task task;
   final Function onDeleteItem;
-  const TaskItem({
+  const TaskItemTemplate({
     Key key,
     this.task,
     this.onDeleteItem,
@@ -23,8 +22,7 @@ class TaskItem extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-
-                Text(task.task),
+                Text(task.taskContent),
               ],
             ),
           )),

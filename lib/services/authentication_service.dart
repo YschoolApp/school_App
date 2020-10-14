@@ -6,7 +6,7 @@ import 'firestore_service.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final FireStoreService _fireStoreService = locator<FireStoreService>();
+  final UserFireStoreService _fireStoreService = locator<UserFireStoreService>();
 
   MyUser _currentUser;
 
