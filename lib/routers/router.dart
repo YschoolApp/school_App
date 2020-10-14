@@ -1,7 +1,8 @@
 import 'package:school_app/models/post.dart';
+
 //import 'file:///C:/Users/mushtaq/AndroidStudioProjects/school_app/lib/routers/route_names.dart';
 import 'package:school_app/ui/views/create_task_view.dart';
-import 'package:school_app/ui/views/home_view.dart';
+import 'package:school_app/ui/views/teacher_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:school_app/ui/views/login_view.dart';
 import 'package:school_app/ui/views/signup_view.dart';
@@ -17,14 +18,23 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case SignUpViewRoute:
       return _getPageRoute(
-
         routeName: settings.name,
         viewToShow: SignUpView(),
       );
-    case HomeViewRoute:
+    case TeacherHomeViewRoute:
       return _getPageRoute(
         routeName: settings.name,
-        viewToShow: HomeView(),
+        viewToShow: TeacherHomeView(),
+      );
+    case StudentHomeViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: StudentHomeView(),
+      );
+    case ParentHomeViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: ParentHomeView(),
       );
     case CreateTaskViewRoute:
       var taskToEdit = settings.arguments as Task;

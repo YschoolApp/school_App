@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../locator.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key key}) : super(key: key);
+class TeacherHomeView extends StatefulWidget {
+  const TeacherHomeView({Key key}) : super(key: key);
 
   @override
-  _HomeViewState createState() => _HomeViewState();
+  _TeacherHomeViewState createState() => _TeacherHomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _TeacherHomeViewState extends State<TeacherHomeView> {
   final scrollController = ScrollController();
 
   @override
