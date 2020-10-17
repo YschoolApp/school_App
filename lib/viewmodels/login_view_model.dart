@@ -29,6 +29,10 @@ class LoginViewModel extends BaseModel {
     if (result is bool) {
       if (currentUser.userRole == "Teacher") {
         _navigationService.navigateWithReplacementTo(TeacherHomeViewRoute);
+      } else if (currentUser.userRole == "Student") {
+        _navigationService.navigateWithReplacementTo(StudentHomeViewRoute);
+      } else if (currentUser.userRole == "Parent") {
+        _navigationService.navigateWithReplacementTo(ParentHomeViewRoute);
       } else {
         await _dialogService.showDialog(
           title: 'Login Failure',

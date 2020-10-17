@@ -5,6 +5,7 @@ import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
 import 'package:school_app/services/task_fire_store_services.dart';
 import 'package:school_app/viewmodels/base_model.dart';
+import 'package:school_app/viewmodels/login_view_model.dart';
 import '../routers/route_names.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -53,6 +54,10 @@ class HomeViewModel extends BaseModel {
       // await _cloudStorageService.deleteImage(taskToDelete.imageFileName);
       setBusy(false);
     }
+  }
+
+  Future navigateToLoginView() async {
+    await _navigationService.navigateTo(LoginViewRoute);
   }
 
   Future navigateToCreateView() async {

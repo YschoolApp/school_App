@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:school_app/models/task.dart';
@@ -23,7 +24,18 @@ class _ParentHomeViewState extends State<ParentHomeView> {
       onModelReady: (model) => model.getQuery(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(title: Text('Parent Home'),),
+        appBar: AppBar(title: Text('Parent Home'),
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.exit_to_app,
+              ),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                model.navigateToLoginView();
+              },
+            ),
+          ],),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Theme.of(context).primaryColor,
           child: !model.busy
