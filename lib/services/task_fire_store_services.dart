@@ -17,8 +17,8 @@ class TaskFireStoreService {
   // Query _query;
 
   TaskFireStoreService() {
-    database = FirebaseDatabase.instance;
-    database.setPersistenceEnabled(true);
+    // database = FirebaseDatabase.instance;
+    // database.setPersistenceEnabled(true);
     // database.setPersistenceCacheSizeBytes(10000000);
     _tasksCollectionReference =
         FirebaseDatabase.instance.reference().child('tasks');
@@ -26,11 +26,6 @@ class TaskFireStoreService {
 
   Query query() => _tasksCollectionReference;
 
-  // FirebaseDatabase.instance
-  //     .reference()
-  //     .child('tasks')
-  //     .orderByChild('uploadTime'),
-  //
 
   Future addTask(Task task) async {
     try {

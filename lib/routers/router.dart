@@ -1,5 +1,6 @@
-import 'package:school_app/models/task.dart';
 import 'package:school_app/ui/views/create_task_view.dart';
+import 'package:school_app/ui/views/table_view.dart';
+import 'package:school_app/ui/views/tasks_view.dart';
 import 'package:school_app/ui/views/teacher_home_view.dart';
 import 'package:school_app/ui/views/student_home_view.dart';
 import 'package:school_app/ui/views/parent_home_view.dart';
@@ -35,12 +36,22 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: ParentHomeView(),
       );
+    case TableViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: TableView(),
+      );
+    case TasksViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: TasksView(),
+      );
     case CreateTaskViewRoute:
-      var taskToEdit = settings.arguments as Task;
+      // var taskToEdit = settings.arguments as Task;
       return _getPageRoute(
         routeName: settings.name,
         viewToShow: CreateTaskView(
-          edittingTask: taskToEdit,
+          // edittingTask: taskToEdit,
         ),
       );
     default:

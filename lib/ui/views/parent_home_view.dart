@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:school_app/models/task.dart';
 import 'package:school_app/ui/widgets/task_item.dart';
-import 'package:school_app/viewmodels/home_view_model.dart';
+import 'package:school_app/viewmodels/tasks_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -19,8 +19,8 @@ class _ParentHomeViewState extends State<ParentHomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<HomeViewModel>.reactive(
-      viewModelBuilder: () => HomeViewModel(),
+    return ViewModelBuilder<TasksViewModel>.reactive(
+      viewModelBuilder: () => TasksViewModel(),
       onModelReady: (model) => model.getQuery(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
@@ -31,8 +31,8 @@ class _ParentHomeViewState extends State<ParentHomeView> {
                 Icons.exit_to_app,
               ),
               onPressed: () {
-                FirebaseAuth.instance.signOut();
-                model.navigateToLoginView();
+                // FirebaseAuth.instance.signOut();
+                // model.navigateToLoginView();
               },
             ),
           ],),

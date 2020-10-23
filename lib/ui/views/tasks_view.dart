@@ -1,20 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:school_app/models/task.dart';
 import 'package:school_app/ui/widgets/task_item.dart';
 import 'package:school_app/viewmodels/tasks_view_model.dart';
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class StudentHomeView extends StatefulWidget {
-  const StudentHomeView({Key key}) : super(key: key);
-
-  @override
-  _StudentHomeViewState createState() => _StudentHomeViewState();
-}
-
-class _StudentHomeViewState extends State<StudentHomeView> {
+class TasksView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<TasksViewModel>.reactive(
@@ -23,18 +16,7 @@ class _StudentHomeViewState extends State<StudentHomeView> {
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('Student Home'),
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.exit_to_app,
-              ),
-              onPressed: () {
-                // FirebaseAuth.instance.signOut();
-                // model.navigateToLoginView();
-              },
-            ),
-          ],
+          title: Text('Tasks Screen'),
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Theme.of(context).primaryColor,
@@ -44,8 +26,8 @@ class _StudentHomeViewState extends State<StudentHomeView> {
           onPressed: model.navigateToCreateView,
         ),
         body: FirebaseAnimatedList(
-            query: model.query,
             padding: EdgeInsets.symmetric(horizontal: 8.0),
+            query: model.query,
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
                 Animation<double> animation, int index) {
               Task task = Task.fromMap(snapshot.value, snapshot.key);

@@ -1,0 +1,81 @@
+{
+  "app_title": "منصة تعليمية",
+
+  "log_in": "تسجيل الدخول",
+  "log_out": "تسجيل الخروج",
+  "sign_up": "إنشاء حساب",
+
+  "not_have_account": "إنشاء حساب جديد",
+  "name": "اسم",
+  "name_hint": "أدخل أسمك",
+  "email": "البريد الإلكتروني",
+  "email_hint": "أدخل بريدك الالكتروني",
+
+  "password": "كلمة السر",
+  "new_password": "كلمة سر جديدة",
+  "password_hint": "أدخل كلمة السر",
+
+  "password_confirm": "تاكيد كلمة السر",
+  "password_confirm_hint": "يرجى تاكيد كلمة السر",
+
+  "old_password": "كلمة السر الحالية",
+  "old_password_hint": "يرجى ادخال كبمة السر الحالية",
+
+
+  "required_field": "يجب ملئ هذا الحقل",
+  "submit_info": "إرسال",
+  "about_us": "معلومات عنا",
+  "settings": "الإعدادات",
+  "phone_number": "رقم الهاتف",
+  "phone_num_hint": "777 777 777",
+  "address": "Address",
+  "select_type_hint": "تسجيل الدخول كـ",
+  "parent": "والد",
+  "student": "طالب",
+  "teacher": "أستاذ",
+
+
+
+  "ch_user_name": "تغيير اسم المستخدم" ,
+  "ch_password": "تغيير كلمة المرور",
+  "ch_phone_num": "تغيير رقم الهاتف",
+  "ch_language": "تغيير اللغة" ,
+
+
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "more": "اكثر",
+  "search": "بحث",
+  "my_account": "حسابي",
+  "delete": "حذف",
+  "edit": "تعديل",
+  "close": "إغلاق",
+  "home": "الرئيسية",
+  "table": "الجدول",
+  "tasks": "المهام",
+  "days": "الايام",
+  "subject": "المادة",
+  "content": "المحتوى",
+  "upload_img": "رفع صورة",
+  "upload_pdf": "رفع ملف pdf",
+
+  "no_internet_w": "معذرة انت غير متصل بالانترنت",
+  "check_internet_w": "يرجى التاكد من اتصالك بالانترنت",
+
+
+  "unexpected_error_occurred": "لللاسف هناك خطأ غير متوقع",
+  "error": "خطأ غير متوقع",
+
+
+
+  "email_verification": "تفعيل الايميل",
+  "verify_email_w": "الرجاء تاكيد تفعيل بريدك الالكتروني",
+  "enter_code_send_to": "يرجى ادخال رمز التفعيل المرسل الى",
+  "verify": "تفعيل",
+  "fill_all_cells": "*الرجاء ملئ الخانات على الترتيب ",
+  "invalid_number": "*رقم التفعيل غير صحيح",
+  "did_not_receive_code": "لم يتم استلام رقم التفعيل",
+  "resend": "اعادة ارسال",
+  "clear": "حذف",
+  "successfully_resend_code": "تم اعادة رمز التفعيل الى ايميلك بنجاح"
+}

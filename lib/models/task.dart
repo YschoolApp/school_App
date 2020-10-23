@@ -1,25 +1,32 @@
-
 class Task {
   final String teacherId;
   final String taskId;
   final String taskContent;
-  final String lessonId;
+  final String subjectId;
+  final String classId;
   final String uploadTime;
+  final String imageUrl;
+  final String imageFileName;
 
-  Task({
-    this.lessonId,
-    this.teacherId,
-    this.taskContent,
-    this.taskId,
-    this.uploadTime
-  });
+  Task(
+      {this.subjectId,
+      this.imageUrl,
+      this.imageFileName,
+      this.teacherId,
+      this.taskContent,
+      this.taskId,
+      this.classId,
+      this.uploadTime});
 
   Map<String, dynamic> toMap() {
     return {
-      'lessonId': lessonId,
+      'subjectId': subjectId,
+      'classId': classId,
       'teacherId': teacherId,
       'task': taskContent,
-      'uploadTime':DateTime.now().toString(),
+      'imageFileName':imageFileName,
+      'imageUrl':imageUrl,
+      'uploadTime': DateTime.now().toString(),
     };
   }
 
@@ -29,7 +36,10 @@ class Task {
       taskId: documentId,
       teacherId: map['teacherId'],
       taskContent: map['task'],
-      lessonId: map['lessonId'],
+      subjectId: map['subjectId'],
+      classId: map['classId'],
+      imageUrl: map['imageUrl'],
+      imageFileName: map['imageFileName'],
       uploadTime: map['uploadTime'],
     );
   }

@@ -24,15 +24,15 @@ class NavigationService {
 
   routeToUserMainScreen(String userRole){
     switch (userRole) {
-      case kfParent:
+      case "Parent":
       //TODO route to Parent main screen
         navigateWithReplacementTo(ParentHomeViewRoute);
         break;
-      case kfStudent:
+      case "Student":
       //TODO route to Student main screen
         navigateWithReplacementTo(StudentHomeViewRoute);
         break;
-      case kfTeacher:
+      case "Teacher":
       //TODO route to Teacher main screen
         navigateWithReplacementTo(TeacherHomeViewRoute);
         break;

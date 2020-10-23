@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:school_app/locator.dart';
 import 'package:school_app/models/claim.dart';
 import 'package:school_app/services/dialog_service.dart';
@@ -24,8 +25,8 @@ class CreateClaimViewModel extends BaseModel {
 
   bool get _editting => _edittingClaim != null;
 
-  Future selectImage() async {
-    var tempImage = await _imageSelector.selectImage();
+  Future selectImage(ImageSource imageSource) async {
+    var tempImage = await _imageSelector.selectImage(imageSource);
     if (tempImage != null) {
       _selectedImage = tempImage;
       notifyListeners();

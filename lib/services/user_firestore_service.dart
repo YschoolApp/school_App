@@ -12,9 +12,10 @@ class UserFireStoreService {
   DatabaseReference _usersCollectionReference;
 
   UserFireStoreService() {
+    
     database = FirebaseDatabase.instance;
     database.setPersistenceEnabled(true);
-    // database.setPersistenceCacheSizeBytes(10000000);
+    database.setPersistenceCacheSizeBytes(10000000);
     _usersCollectionReference =
         FirebaseDatabase.instance.reference().child('users');
     _usersCollectionReference.keepSynced(true);
@@ -38,11 +39,12 @@ class UserFireStoreService {
 
       var userData = await _usersCollectionReference.child(uid).once();
 
-      print('===== get user');
+      print('===== get user from fireStore');
 
       print(userData.value.toString());
 
       return MyUser.fromJson(userData.value);
+
     } catch (e) {
       // TODO: Find or create a way to repeat error handling without so much repeated code
       if (e is PlatformException) {

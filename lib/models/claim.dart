@@ -21,6 +21,8 @@ class Claim {
     };
   }
 
+  
+
   static Claim fromMap(Map<String, dynamic> map, String documentId) {
     if (map == null) return null;
 

@@ -14,6 +14,18 @@ class CloudStorageService {
     final StorageReference firebaseStorageRef =
         FirebaseStorage.instance.ref().child(imageFileName);
 
+    // List<String> urlList = [];
+
+    // imageToUpload.forEach((image){
+    //     StorageUploadTask uploadTask = firebaseStorageRef.putFile(imageToUpload);
+
+    // StorageTaskSnapshot storageSnapshot = await uploadTask.onComplete;
+
+    // var downloadUrl = await storageSnapshot.ref.getDownloadURL();
+
+
+    // });
+
     StorageUploadTask uploadTask = firebaseStorageRef.putFile(imageToUpload);
 
     StorageTaskSnapshot storageSnapshot = await uploadTask.onComplete;

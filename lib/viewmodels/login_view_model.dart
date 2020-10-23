@@ -27,18 +27,7 @@ class LoginViewModel extends BaseModel {
     setBusy(false);
 
     if (result is bool) {
-      if (currentUser.userRole == "Teacher") {
-        _navigationService.navigateWithReplacementTo(TeacherHomeViewRoute);
-      } else if (currentUser.userRole == "Student") {
-        _navigationService.navigateWithReplacementTo(StudentHomeViewRoute);
-      } else if (currentUser.userRole == "Parent") {
-        _navigationService.navigateWithReplacementTo(ParentHomeViewRoute);
-      } else {
-        await _dialogService.showDialog(
-          title: 'Login Failure',
-          description: 'General login failure. Please try again later',
-        );
-      }
+      _navigationService.routeToUserMainScreen(currentUser.userRole);
     } else {
       await _dialogService.showDialog(
         title: 'Login Failure',

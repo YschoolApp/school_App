@@ -51,7 +51,9 @@ class CreateClaimView extends StatelessWidget {
                 verticalSpaceSmall,
                 GestureDetector(
                   // When we tap we call selectImage
-                  onTap: () => model.selectImage(),
+                  onTap: () async {
+                    // return model.selectImage();
+                  },
                   child: Container(
                     child: Row(
                       children: [

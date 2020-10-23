@@ -1,0 +1,88 @@
+{
+  "app_title": "eSchool",
+
+  "log_in": "Log In",
+  "log_out": "Log Out",
+  "sign_up": "Sign Up",
+  "not_have_account": "Create an Account if you\\'re new.",
+
+  "full_name": "Full Name",
+  "name_hint": "Enter your name",
+  "email": "Email",
+  "email_hint": "Enter your email",
+
+  "password": "Password",
+  "new_password": "New Password",
+  "password_hint": "Enter a Password",
+
+  "password_confirm": "Password Confirmation",
+  "password_confirm_hint": "Confirm your Password",
+
+  "old_password": "Current Password",
+  "old_password_hint": "enter your current password",
+
+
+  "required_field": "this Field cant be empty",
+  "submit_info": "Submit",
+  "about_us": "About Us",
+  "settings": "Settings",
+  "phone_number": "Phone number",
+  "phone_num_hint": "777 777 777 ",
+  "address": "Address",
+  "select_type_hint": "sign in as",
+  "parent": "Parent",
+  "student": "Student",
+  "teacher": "Teacher",
+
+
+
+  "see_all": "see all",
+  "category": "Categories",
+  "delete": "Delete",
+  "edit": "Edit",
+  "more": "More",
+  "search": "Search",
+  "my_account": "My Account",
+  "save": "Save",
+  "cancel": "Cancel",
+  "error": "error",
+  "close": "Close",
+  "home": "Home",
+  "table": "Table",
+  "tasks": "Tasks",
+  "days": "Days",
+  "subject": "Subject",
+  "content": "The Content",
+  "upload_img": "Upload Image",
+  "upload_pdf": "Upload Pdf",
+
+
+
+  "ch_user_name": "Change user name",
+  "ch_password": "Change password",
+  "ch_phone_num": "Change phone number",
+  "ch_language": "Change language",
+
+
+
+  "email_verification": "Email Verification",
+  "enter_code_send_to": "Enter the code sent to ",
+  "verify": "verify",
+
+  "fill_all_cells": "*Please fill up all the cells properly",
+  "invalid_number": "*Invalid Verifying number",
+  "did_not_receive_code": "Didn't receive the code?",
+  "resend": "resend",
+  "clear": "Clear",
+  "successfully_resend_code": "The code verification has been sent again",
+
+
+  "no_internet_w": "There is No Internet Connection",
+  "check_internet_w": "Please Check Your Internet Connection",
+
+
+
+  "verify_email_w": "Please Verify your account",
+  "unexpected_error_occurred": "Oops unexpected error occurred"
+
+}

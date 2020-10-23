@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:school_app/locator.dart';
 import 'package:school_app/services/authentication_service.dart';
 import 'package:school_app/services/navigation_service.dart';
@@ -13,17 +14,20 @@ class StartUpViewModel extends BaseModel {
   final PushNotificationService _pushNotificationService =
       locator<PushNotificationService>();
 
+
+
   Future handleStartUpLogic() async {
     // Register for push notifications
+
     await _pushNotificationService.initialise();
     var hasLoggedInUser = await _authenticationService.isUserLoggedIn();
     await Future.delayed(Duration(seconds: 4));
 
     if (hasLoggedInUser) {
-      _navigationService
-          .routeToUserMainScreen(_authenticationService.userRole());
+      print(currentUser.userRole);
+      _navigationService.routeToUserMainScreen(currentUser.userRole);
     } else {
-      _navigationService.navigateTo(LoginViewRoute);
+      _navigationService.navigateWithReplacementTo(LoginViewRoute);
     }
   }
 }

@@ -21,3 +21,10 @@ const EdgeInsets largeFieldPadding =
 // Text Variables
 const TextStyle buttonTitleTextStyle =
     const TextStyle(fontWeight: FontWeight.w700, color: Colors.white);
+
+const kBottomSheetDecoration = BoxDecoration(
+  borderRadius:  BorderRadius.only(
+    topLeft: const Radius.circular(16.0),
+    topRight: const Radius.circular(16.0),
+  ),
+);

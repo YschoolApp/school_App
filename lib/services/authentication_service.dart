@@ -2,11 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:school_app/models/user_model.dart';
 import '../locator.dart';
-import 'firestore_service.dart';
+import 'user_firestore_service.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final UserFireStoreService _fireStoreService = locator<UserFireStoreService>();
+  final UserFireStoreService _fireStoreService =
+      locator<UserFireStoreService>();
 
   MyUser _currentUser;
 
@@ -48,7 +49,7 @@ class AuthenticationService {
         userRole: passedUser.userRole,
       ));
 
-     await _populateCurrentUser(authResult.user);
+      await _populateCurrentUser(authResult.user);
 
       return authResult.user != null;
     } catch (e) {
@@ -58,7 +59,6 @@ class AuthenticationService {
 
   Future<bool> isUserLoggedIn() async {
     var user = _firebaseAuth.currentUser;
-    print('============isUserLoggedIn() ');
     print(user.toString());
     await _populateCurrentUser(user);
     return user != null;
@@ -66,14 +66,16 @@ class AuthenticationService {
 
   Future _populateCurrentUser(User user) async {
     if (user != null) {
-      print('======= _populateCurrentUser');
       print(user.uid);
       _currentUser = await _fireStoreService.getUser(user.uid);
     }
   }
 
-  String userRole()  {
+  String userRole() {
     return _currentUser?.userRole;
   }
 
+  Future signOut() async {
+    await _firebaseAuth.signOut();
+  }
 }
