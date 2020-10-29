@@ -17,26 +17,22 @@ class NavigationService {
   }
 
   Future<dynamic> navigateWithReplacementTo(String routeName, {dynamic arguments}) {
+    
     return _navigationKey.currentState
         .pushReplacementNamed(routeName, arguments: arguments);
   }
 
-
   routeToUserMainScreen(String userRole){
-    switch (userRole) {
-      case "Parent":
-      //TODO route to Parent main screen
+    switch (userRole.toLowerCase()) {
+      case "parent":
         navigateWithReplacementTo(ParentHomeViewRoute);
         break;
-      case "Student":
-      //TODO route to Student main screen
+      case "student":
         navigateWithReplacementTo(StudentHomeViewRoute);
         break;
-      case "Teacher":
-      //TODO route to Teacher main screen
+      case "teacher":
         navigateWithReplacementTo(TeacherHomeViewRoute);
         break;
     }
   }
-
 }

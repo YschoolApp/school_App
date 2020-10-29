@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:school_app/all_constants/field_name_constant.dart';
-import 'package:school_app/project_widget/bottom_sheet_widget.dart';
 import 'package:school_app/ui/shared/ui_helpers.dart';
 import 'package:school_app/ui/widgets/busy_button.dart';
 import 'package:school_app/ui/widgets/drop_down_menu.dart';
@@ -21,6 +18,7 @@ class CreateTaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ViewModelBuilder<CreateTaskViewModel>.reactive(
       viewModelBuilder: () => CreateTaskViewModel(),
       onModelReady: (model) {
@@ -67,6 +65,15 @@ class CreateTaskView extends StatelessWidget {
                               ),
                               verticalSpaceMedium,
                               InputTextForm(
+                                attributeKey: 'taskTitle',
+                                kfHintText: kfTaskTitle,
+                                kfLabelText: kfTaskTitle,
+                                autoFocus: false,
+                                // textEditingController: _bodyController,
+                                minLine: 1,
+                              ),
+                              verticalSpaceMedium,
+                              InputTextForm(
                                 attributeKey: 'taskContent',
                                 kfHintText: kfContent,
                                 kfLabelText: kfContent,
@@ -84,6 +91,8 @@ class CreateTaskView extends StatelessWidget {
                                             .currentState.value.length >=
                                         3) {
                                       return 'photo must be 3 or less';
+                                    }else{
+                                      return null;
                                     }
                                   }
                                 ],

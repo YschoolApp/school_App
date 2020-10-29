@@ -7,6 +7,7 @@ import 'package:school_app/models/class_model.dart';
 import 'package:school_app/models/subject_model.dart';
 import 'package:school_app/models/task.dart';
 import 'package:school_app/services/cloud_storage_service.dart';
+
 // import 'package:school_app/services/cloud_storage_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/lessons_service.dart';
@@ -36,7 +37,8 @@ class CreateTaskViewModel extends BaseModel {
   getClassAndSubject() async {
     setBusy(true);
     _selectedImage = null;
-    var result = await _lessonsService.getLessons();
+    var result = await _lessonsService.getLessons(orderByValue: 'teacher_id',equalToId: currentUser.id);
+    await Future.delayed(Duration(seconds: 1));
     if (result is List) {
       classesList = _lessonsService.classesList;
       subjectsList = _lessonsService.subjectsList;
@@ -85,24 +87,26 @@ class CreateTaskViewModel extends BaseModel {
       // print(selectedClass.id);
       // print(selectedSubject.id);
 
-
       CloudStorageResult storageResult;
 
       //TODO upload all list;
-      storageResult = await _cloudStorageService.uploadImage(
-        imageToUpload: allValues['images'][0],
-        title: '${selectedClass.id}-${selectedSubject.id}',
-      );
+      if (allValues['images'].length != null && allValues['images'].length != 0 ) {
+        storageResult = await _cloudStorageService.uploadImage(
+          imageToUpload: allValues['images'][0],
+          title: '${selectedClass.id}-${selectedSubject.id}',
+        );
+      }
 
       var result;
 
       result = await _fireStoreService.addTask(Task(
+        taskTitle: allValues['taskTitle'],
         taskContent: allValues['taskContent'],
         subjectId: selectedSubject.id,
         classId: selectedClass.id,
         teacherId: currentUser.id,
-        imageUrl: storageResult.imageUrl,
-        imageFileName: storageResult.imageFileName,
+        imageUrl: storageResult?.imageUrl,
+        imageFileName: storageResult?.imageFileName,
       ));
 
       setBusy(false);
@@ -123,46 +127,46 @@ class CreateTaskViewModel extends BaseModel {
     }
   }
 
-  // Future addTask(Task task) async {
-  //   setBusy(true);
+// Future addTask(Task task) async {
+//   setBusy(true);
 
-  //   CloudStorageResult storageResult;
+//   CloudStorageResult storageResult;
 
-  //   storageResult = await _cloudStorageService.uploadImage(
-  //     imageToUpload: _selectedImage,
-  //     title: '${task.classId}-${task.subjectId}',
-  //   );
+//   storageResult = await _cloudStorageService.uploadImage(
+//     imageToUpload: _selectedImage,
+//     title: '${task.classId}-${task.subjectId}',
+//   );
 
-  //   var result;
+//   var result;
 
-  //   result = await _fireStoreService.addTask(Task(
-  //     taskContent: task.taskContent,
-  //     subjectId: task.subjectId,
-  //     classId: task.classId,
-  //     teacherId: currentUser.id,
-  //     imageUrl: storageResult.imageUrl,
-  //     imageFileName: storageResult.imageFileName,
-  //   ));
+//   result = await _fireStoreService.addTask(Task(
+//     taskContent: task.taskContent,
+//     subjectId: task.subjectId,
+//     classId: task.classId,
+//     teacherId: currentUser.id,
+//     imageUrl: storageResult.imageUrl,
+//     imageFileName: storageResult.imageFileName,
+//   ));
 
-  //   setBusy(false);
+//   setBusy(false);
 
-  //   if (result is String) {
-  //     await _dialogService.showDialog(
-  //       title: 'Could not not create task',
-  //       description: result,
-  //     );
-  //   } else {
-  //     await _dialogService.showDialog(
-  //       title: 'Task successfully Added',
-  //       description: 'Your task has been created',
-  //     );
-  //   }
+//   if (result is String) {
+//     await _dialogService.showDialog(
+//       title: 'Could not not create task',
+//       description: result,
+//     );
+//   } else {
+//     await _dialogService.showDialog(
+//       title: 'Task successfully Added',
+//       description: 'Your task has been created',
+//     );
+//   }
 
-  //   _navigationService.pop();
-  // }
+//   _navigationService.pop();
+// }
 
-  // void setEdittingTask(Task edittingTask) {
-  //   _edittingTask = edittingTask;
-  // }
+// void setEdittingTask(Task edittingTask) {
+//   _edittingTask = edittingTask;
+// }
 
 }

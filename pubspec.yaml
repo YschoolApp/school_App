@@ -15,61 +15,49 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_cupertino_localizations: ^1.0.1
-  cupertino_icons: ^0.1.3
   async: ^2.4.2
-  provider: ^4.3.2+2
-  get_it: ^5.0.0
-  #  get: ^3.11.1
-  connectivity: ^0.4.9+2
-  flushbar: ^1.10.4
-  fluttertoast: ^7.1.1
-  # provider architecture
-  #  provider_architecture: ^1.0.3
-  #  provider_architecture: ^1.1.1+1
-  stacked: ^1.7.6
-  #  -------------------------
-  firebase_core: ^0.5.0
-  firebase_auth: ^0.18.0+1
+  badges: ^1.1.4
+  cached_network_image: ^2.2.0+1
   cloud_firestore: ^0.14.0+2
-  firebase_storage: ^4.0.0
+  connectivity: ^0.4.9+2
+  convex_bottom_bar: ^2.4.1
+  cupertino_icons: ^0.1.3
+  dio: ^3.0.10
+  firebase_auth: ^0.18.0+1
+  firebase_core: ^0.5.0
   firebase_database: ^4.1.1
   firebase_messaging: ^7.0.0
-  # ----------------------
-  flutter_local_notifications: ^1.4.4+4
+  firebase_storage: ^4.0.0
+  flushbar: ^1.10.4
   flutter_app_badger: ^1.1.2
-  # ----------------------
+  flutter_cupertino_localizations: ^1.0.1
+  flutter_custom_clippers: ^1.1.2
+  flutter_form_builder: ^3.14.0
+  flutter_local_notifications: ^1.4.4+4
+  flutter_spinkit: ^4.1.2+1
+  flutter_staggered_grid_view: ^0.3.2
+  flutter_svg: ^0.18.0
+  fluttertoast: ^7.1.1
+  font_awesome_flutter: ^8.8.1
+  get_it: ^5.0.0
   hive: ^1.4.4
   hive_flutter: ^0.3.1
-  # ----------------------
   image_picker: ^0.6.7+11
-  cached_network_image: ^2.2.0+1
-  #change_app_package_name: ^0.1.2
-  dio: ^3.0.10
-  pin_code_fields: ^3.0.0
-  flutter_spinkit: ^4.1.2+1
-  flutter_form_builder: ^3.14.0
-  convex_bottom_bar: ^2.4.1
-#  bottom_navy_bar: ^5.5.0
-  font_awesome_flutter: ^8.8.1
-  flutter_svg: ^0.18.0
-  flutter_custom_clippers: ^1.1.2
-  flutter_staggered_grid_view: ^0.3.2
   modal_bottom_sheet: ^0.2.2
+  pin_code_fields: ^3.0.0
+  provider: ^4.3.2+2
+  readmore: ^1.0.0
+  stacked: ^1.7.6
 #  json_table: ^1.4.0
 #  horizontal_data_table: ^1.0.6+3
 #  table_sticky_headers: ^1.1.2
 #  lazy_data_table: ^0.1.5
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter:
   uses-material-design: true
-
 
   # To add assets to your application, add an assets section, like this:
   assets:
@@ -81,10 +69,10 @@ flutter:
     - family: Tajawal
       fonts:
         - asset: assets/fonts/Tajawal-Medium.ttf
+
 #    - family: Almarai
 #      fonts:
 #        - asset: assets/fonts/Almarai-Regular.ttf
 #    - family: Cairo
 #      fonts:
 #        - asset: assets/fonts/Cairo-Regular.ttf
-

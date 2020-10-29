@@ -1,62 +1,78 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:school_app/models/task.dart';
-import 'package:school_app/ui/widgets/task_item.dart';
-import 'package:school_app/viewmodels/tasks_view_model.dart';
+import 'package:badges/badges.dart';
+import 'package:school_app/models/subject_model.dart';
+import 'package:school_app/ui/views/single_widget_child.dart';
+import 'package:school_app/viewmodels/student_tasks_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class StudentHomeView extends StatefulWidget {
-  const StudentHomeView({Key key}) : super(key: key);
+class StudentHomeView extends SingleWidgetChild {
+  @override
+  String appBarTitle() {
+    return 'Home';
+  }
 
   @override
-  _StudentHomeViewState createState() => _StudentHomeViewState();
-}
-
-class _StudentHomeViewState extends State<StudentHomeView> {
-  @override
-  Widget build(BuildContext context) {
-    return ViewModelBuilder<TasksViewModel>.reactive(
-      viewModelBuilder: () => TasksViewModel(),
-      onModelReady: (model) => model.getQuery(),
+  Widget createWidget() {
+    return ViewModelBuilder<StudentHomeViewModel>.reactive(
+      viewModelBuilder: () => StudentHomeViewModel(),
+      onModelReady: (model) => model.startGetData(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text('Student Home'),
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.exit_to_app,
+        body: model.busy
+            ? Center(child: CircularProgressIndicator())
+            : ListView.separated(
+                primary: false,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                padding: EdgeInsets.symmetric(vertical: 8.0),
+                separatorBuilder: (context, index) => Divider(),
+                itemCount: model.subjectsList.length,
+                itemBuilder: (BuildContext _context, int index) {
+                  Subject subject = model.subjectsList[index];
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () => model.navigateToTasksOfSubject(subject),
+                      child: SubjectItem(subject: subject),
+                    ),
+                  );
+                },
               ),
-              onPressed: () {
-                // FirebaseAuth.instance.signOut();
-                // model.navigateToLoginView();
-              },
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Theme.of(context).primaryColor,
-          child: !model.busy
-              ? Icon(Icons.add)
-              : Center(child: CircularProgressIndicator()),
-          onPressed: model.navigateToCreateView,
-        ),
-        body: FirebaseAnimatedList(
-            query: model.query,
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
-            itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                Animation<double> animation, int index) {
-              Task task = Task.fromMap(snapshot.value, snapshot.key);
-              return GestureDetector(
-                onTap: () => model.editTask(index),
-                child: TaskItemTemplate(
-                  task: task,
-                  onDeleteItem: () => model.deleteTask(task),
-                ),
-              );
-            }),
+      ),
+    );
+  }
+}
+
+class SubjectItem extends StatelessWidget {
+  const SubjectItem({
+    Key key,
+    @required this.subject,
+  }) : super(key: key);
+
+  final Subject subject;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(subject.name),
+      trailing: ValueListenableBuilder(
+        valueListenable: Hive.box(subject.name).listenable(),
+        builder: (context, Box box, widget) {
+          var foundElements = box.values.where((element) => element == false);
+          return foundElements.length == 0
+              ? SizedBox.shrink()
+              : Badge(
+                  badgeColor: Theme.of(context).primaryColor,
+                  badgeContent: Text(
+                    '${foundElements.length}',
+                    style: TextStyle(color: Colors.white, height: 2),
+                  ),
+                  padding: EdgeInsets.all(8.0)
+                  // child: Icon(Icons.settings),
+                  );
+        },
       ),
     );
   }

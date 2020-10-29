@@ -11,7 +11,6 @@ class TaskFireStoreService {
   // final CollectionReference _tasksCollectionReference =
   // FirebaseFirestore.instance.collection('tasks');
 
-  FirebaseDatabase database;
   DatabaseReference _tasksCollectionReference;
 
   // Query _query;
@@ -39,25 +38,6 @@ class TaskFireStoreService {
     }
   }
 
-  // Future getTasksOnceOff() async {
-  //   try {
-  //     var taskDocumentSnapshot =
-  //     await _tasksCollectionReference.limitToFirst(TasksLimit).once();
-  //     if (taskDocumentSnapshot.value!=null) {
-  //       return taskDocumentSnapshot.value
-  //           .map((snapshot) => Task.fromMap(snapshot.data(), snapshot.id))
-  //           .where((mappedItem) => mappedItem.task != null)
-  //           .toList();
-  //     }
-  //   } catch (e) {
-  //     // TODO: Find or create a way to repeat error handling without so much repeated code
-  //     if (e is PlatformException) {
-  //       return e.message;
-  //     }
-  //
-  //     return e.toString();
-  //   }
-  // }
 
   Future deleteTask(String documentId) async {
     await _tasksCollectionReference.child(documentId).remove();

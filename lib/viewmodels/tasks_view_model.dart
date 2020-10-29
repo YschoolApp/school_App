@@ -10,33 +10,16 @@ import 'package:firebase_database/firebase_database.dart';
 
 class TasksViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
-  // final AuthenticationService _authenticationService =
-  //     locator<AuthenticationService>();
+
   final TaskFireStoreService _tasksFirestoreService =
       locator<TaskFireStoreService>();
   final DialogService _dialogService = locator<DialogService>();
-
-  // final CloudStorageService _cloudStorageService =
-  // locator<CloudStorageService>();
 
   Query query;
 
   getQuery() {
     query = _tasksFirestoreService.query();
   }
-
-//  Stream<List<Task>> stream;
-//   void listenToTasks() {
-//
-//     setBusy(true);
-//
-//     _firestoreService.listenToTasksRealTime();
-//
-//     stream = _firestoreService.tasksController.stream;
-//
-//     setBusy(false);
-// //    });
-//   }
 
   Future deleteTask(Task taskToDelete) async {
     var dialogResponse = await _dialogService.showConfirmationDialog(

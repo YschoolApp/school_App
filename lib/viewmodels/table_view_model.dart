@@ -61,8 +61,10 @@ class TableViewModel extends BaseModel {
 
   startGetLessons()async{
     setBusy(true);
+    String orderValue = currentUser.userRole.toLowerCase()=='teacher'?'teacher_id':'class_id';
+    String equalID= currentUser.userRole.toLowerCase()=='teacher'?currentUser.id:currentUser.classId;
 
-    var lessons = await _lessonsService.getLessons();
+    var lessons = await _lessonsService.getLessons(orderByValue:orderValue,equalToId: equalID);
     if(lessons is List)
     lessonsList = lessons;
     else{

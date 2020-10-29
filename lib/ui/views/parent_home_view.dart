@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:school_app/models/task.dart';
-import 'package:school_app/ui/widgets/task_item.dart';
+import 'package:school_app/ui/widgets/task_item_template.dart';
 import 'package:school_app/viewmodels/tasks_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

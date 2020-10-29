@@ -7,5 +7,6 @@ const String CreateTaskViewRoute = "CreateTaskView";
 const String SendClaimViewRoute = "SendClaimView";
 const String TableViewRoute = "TableView";
 const String TasksViewRoute = "TasksView";
+const String TasksOfSubjectViewRout = "TasksOfSubjectView";
 
 // Generate the views here

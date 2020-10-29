@@ -20,13 +20,7 @@ class HomeViewModel extends BaseModel {
     _navigationService.navigateTo(TableViewRoute);
   }
 
-  signOut() async {
-    await _authenticationService.signOut();
-    navigateToLoginView();
-  }
+  
 
-  Future navigateToLoginView() async {
-    await _navigationService.navigateWithReplacementTo(LoginViewRoute);
-  }
 
 }

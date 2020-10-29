@@ -29,15 +29,7 @@ class LocalNotificationInit{
     initializationSettings = InitializationSettings(
         androidInitializationSettings, iosInitializationSettings);
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: onSelectNotification);
-  }
-
-  Future onSelectNotification(String payload) async {
-    if (payload != null) {
-      print('notification payload: ' + payload);
-      if (payload == 'create_post')
-        navigationService.navigateTo('CreatePostViewRoute');
-    }
+        onSelectNotification: onNotificationClicked);
   }
 
   Future onDidReceiveLocalNotification(
@@ -98,4 +90,15 @@ class LocalNotificationInit{
       0, pushTitle, pushText, notificationDetails,payload: action,);
 
   }
+
+  Future onNotificationClicked(String payload) async {
+    print('notification got Clicked');
+    if (payload != null) {
+      print('notification payload: ' + payload);
+      if (payload == 'create_post')
+        navigationService.navigateTo('CreatePostViewRoute');
+    }
+  }
+
+
 }

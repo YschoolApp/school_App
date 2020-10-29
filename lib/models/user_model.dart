@@ -6,12 +6,14 @@ class MyUser {
   final String userAddress;
   final String userRole;
   final bool isActivate;
+  final String classId;
 
   MyUser({this.id,
     this.userFullName,
     this.userEmail,
     this.userRole,
     this.userAddress,
+    this.classId,
     this.isActivate = false,
     this.userPhone});
 
@@ -22,6 +24,7 @@ class MyUser {
         userFullName = data['userFullName'],
         userEmail = data['userEmail'],
         userRole = data['userRole'],
+        classId = data['classId'],
         userAddress = data['userAddress'],
         isActivate = data['isActivate'],
         userPhone = data['userPhone'];
@@ -43,6 +46,7 @@ class MyUser {
       'userEmail': userEmail,
       'userRole': userRole,
       'isActivate': isActivate,
+      'classId':classId
     };
   }
 }

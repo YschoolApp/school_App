@@ -8,26 +8,34 @@ import '../routers/route_names.dart';
 
 class StartUpViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   final PushNotificationService _pushNotificationService =
-      locator<PushNotificationService>();
-
-
+  locator<PushNotificationService>();
 
   Future handleStartUpLogic() async {
     // Register for push notifications
 
     await _pushNotificationService.initialise();
     var hasLoggedInUser = await _authenticationService.isUserLoggedIn();
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 2));
 
     if (hasLoggedInUser) {
-      print(currentUser.userRole);
+      if (currentUser.userRole.toLowerCase() != 'teacher') {
+        registerSubscription();
+      }
       _navigationService.routeToUserMainScreen(currentUser.userRole);
     } else {
       _navigationService.navigateWithReplacementTo(LoginViewRoute);
+    }
+  }
+
+  void registerSubscription() {
+    print('class id is ' + currentUser.classId);
+    if (currentUser.classId != null) {
+      _pushNotificationService
+          .subscribeToTopicNotification(currentUser.classId);
     }
   }
 }

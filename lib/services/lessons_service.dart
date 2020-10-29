@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:school_app/models/class_model.dart';
 import 'package:school_app/models/lesson_model.dart';
@@ -18,6 +19,7 @@ class LessonsService {
     lessonsList = [];
     classesList = [];
     subjectsList = [];
+
     _lessonCollectionReference =
         FirebaseDatabase.instance.reference().child('lesson');
     _subjectCollectionReference =
@@ -26,20 +28,20 @@ class LessonsService {
         FirebaseDatabase.instance.reference().child('Class');
   }
 
-  Future getLessons() async {
+  Future getLessons(
+      {@required String orderByValue, @required String equalToId}) async {
     print("start getLessons");
     lessonsList.clear();
     subjectsList.clear();
     classesList.clear();
     try {
       await _lessonCollectionReference
-          .orderByChild('teacher_id')
-          .equalTo(FirebaseAuth.instance.currentUser.uid)
+          .orderByChild(orderByValue)
+          .equalTo(equalToId)
           .once()
-          .then((snapshot) {
-        snapshot.value.forEach((key, values) async {
+          .then((snapshot) async {
+        await snapshot.value.forEach((key, values) async {
           Lesson lesson = Lesson.fromJson(values);
-          print('sub id ' + lesson.subjectId);
           String subjectName = await getSubjectName(lesson.subjectId);
           String className = await getClassName(lesson.classId);
           lesson.subjectName = subjectName;
@@ -48,7 +50,6 @@ class LessonsService {
         });
       });
       return lessonsList;
-      print("end getLessons");
     } catch (e) {
       if (e is PlatformException) {
         print('========= e is PlatformException in getting Lessons  ========');
