@@ -5,10 +5,8 @@ import 'package:school_app/routers/route_names.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/lessons_service.dart';
 import 'package:school_app/services/navigation_service.dart';
-import 'package:school_app/ui/views/student_home_view.dart';
 import '../locator.dart';
 import 'base_model.dart';
-
 
 class StudentHomeViewModel extends BaseModel {
 
@@ -41,6 +39,7 @@ class StudentHomeViewModel extends BaseModel {
       subjectsList = List<Subject>();
       subjectsList.clear();
       subjectsList = _lessonsService.subjectsList;
+      subjectsList.toSet();
       await openBoxes();
     } else {
       await _dialogService.showDialog(

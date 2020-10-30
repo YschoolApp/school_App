@@ -48,14 +48,8 @@ class TableView extends StatelessWidget {
                         model.navigateToTasks(toShow);
                       },
                       child: Container(
-                        // color: toShow!=null?Colors.deepPurple.withOpacity(0.5):null,
                         padding: EdgeInsets.all(8),
-                        child: Text(
-                          toShow != null
-                              ? '${toShow?.subjectName} \n ${toShow?.className}'
-                              : '-',
-                          textAlign: TextAlign.center,
-                        ),
+                        child: model.checkIsTeacher()?buildTeacherText(toShow):buildStudentText(toShow),
                       ),
                     );
                   },
@@ -63,6 +57,20 @@ class TableView extends StatelessWidget {
                 ),
         ),
       ),
+    );
+  }
+
+  Text buildTeacherText(Lesson toShow) {
+    return Text(
+      toShow != null ? '${toShow?.subjectName} \n ${toShow?.className}' : '-',
+      textAlign: TextAlign.center,
+    );
+  }
+
+    Text buildStudentText(Lesson toShow) {
+    return Text(
+      toShow != null ? '${toShow?.subjectName}' : '-',
+      textAlign: TextAlign.center,
     );
   }
 }

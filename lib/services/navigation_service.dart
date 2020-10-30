@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_app/all_constants/field_name_constant.dart';
-import '../routers/route_names.dart';
+import '../routers/route_names.dart' show ParentHomeViewRoute, StudentHomeViewRoute, TeacherHomeViewRoute;
 
 class NavigationService {
   GlobalKey<NavigatorState> _navigationKey = GlobalKey<NavigatorState>();

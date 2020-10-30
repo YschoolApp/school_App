@@ -48,6 +48,7 @@ const String kfUploadImg = 'upload_img';
 const String kfUploadPdf = 'upload_pdf';
 const String kfShowMore= "show_more";
 const String kfShowLess= "show_less";
+const String kfSetUnread= "set_unread";
 // const String kfSeeAll = "see_all";
 // const String kfDelete= 'delete';
 // const String kfEdit= 'edit';

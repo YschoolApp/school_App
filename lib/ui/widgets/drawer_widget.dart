@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:school_app/viewmodels/drawer_view_model.dart';
 
 import 'package:stacked/stacked.dart';
@@ -15,6 +16,7 @@ class AppDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             _createHeader(
+              context,
               model.currentUser.userFullName,
               model.currentUser.userEmail,
               model.currentUser.userPhone,
@@ -24,14 +26,29 @@ class AppDrawer extends StatelessWidget {
                 text: 'Home',
                 onTap: () {
                   model.navigateToHomeView();
-                 
                 }),
+            model.checkIsTeacher()
+                ? _createDrawerItem(
+                    icon: Icons.book,
+                    text: 'Tasks',
+                    onTap: () {
+                      model.navigateToTasksView();
+                    })
+                : SizedBox.shrink(),
             _divider,
             _createDrawerItem(
-                icon: Icons.book,
-                text: 'Tasks',
+              text: 'View Table',
+              icon: FontAwesomeIcons.table,
+              onTap: (){
+                model.navigateToTableView();
+              }
+            ),
+            _divider,
+            _createDrawerItem(
+                icon: FontAwesomeIcons.comment,
+                text: 'Claim',
                 onTap: () {
-                  model.navigateToTasksView();
+                  model.navigateToClaim();
                 }),
             _divider,
             _createDrawerItem(
@@ -39,30 +56,34 @@ class AppDrawer extends StatelessWidget {
               text: 'Sign Out',
               onTap: () => model.signOut(),
             ),
-            _divider,
-            _createDrawerItem(icon: Icons.event, text: 'Events'),
-            _divider,
-            _createDrawerItem(icon: Icons.note, text: 'Notes'),
+            _divider
           ],
         ),
       ),
     );
   }
 
-  Widget _createHeader(String userName, String userEmail, String userImage) {
+  Widget _createHeader(BuildContext context, String userName, String userEmail,
+      String userImage) {
     return UserAccountsDrawerHeader(
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage('assets/images/panner_bg.png'),
+          colorFilter: ColorFilter.mode(
+            Theme.of(context).primaryColor,
+            BlendMode.color,
+          ),
+          image: AssetImage(
+            'assets/images/panner_bg.png',
+          ),
         ),
       ),
       accountName: Text(userName),
       accountEmail: Text(userEmail),
       currentAccountPicture: CircleAvatar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Theme.of(context).primaryColor.withGreen(80),
         child: Text(
-          userName,
+          userName[0],
           style: TextStyle(fontSize: 40.0),
         ),
       ),

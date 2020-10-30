@@ -6,7 +6,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:school_app/routers/router.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/navigation_service.dart';
-import 'package:school_app/services/task_reading_status.dart';
 import 'package:school_app/ui/views/startup_view.dart';
 import 'package:school_app/utils/dialog_manager.dart';
 import 'package:school_app/utils/languages_and_localization/app_language.dart';

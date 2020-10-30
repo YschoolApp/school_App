@@ -6,12 +6,6 @@ import 'package:school_app/services/lessons_service.dart';
 import 'package:school_app/services/navigation_service.dart';
 import 'package:school_app/viewmodels/base_model.dart';
 
-class LessonToShow{
-  String className;
-  String lessonId;
-
-
-}
 class TableViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final LessonsService _lessonsService = locator<LessonsService>();
@@ -23,12 +17,10 @@ class TableViewModel extends BaseModel {
   // final CloudStorageService _cloudStorageService =
   // locator<CloudStorageService>();
 
-
   List<Lesson> lessonsList;
 
   TableViewModel() {
     lessonsList = [];
-
   }
 
   List englishDays = [
@@ -59,15 +51,20 @@ class TableViewModel extends BaseModel {
     return matchedLesson;
   }
 
-  startGetLessons()async{
+  startGetLessons() async {
     setBusy(true);
-    String orderValue = currentUser.userRole.toLowerCase()=='teacher'?'teacher_id':'class_id';
-    String equalID= currentUser.userRole.toLowerCase()=='teacher'?currentUser.id:currentUser.classId;
+    String orderValue = currentUser.userRole.toLowerCase() == 'teacher'
+        ? 'teacher_id'
+        : 'class_id';
+    String equalID = currentUser.userRole.toLowerCase() == 'teacher'
+        ? currentUser.id
+        : currentUser.classId;
 
-    var lessons = await _lessonsService.getLessons(orderByValue:orderValue,equalToId: equalID);
-    if(lessons is List)
-    lessonsList = lessons;
-    else{
+    var lessons = await _lessonsService.getLessons(
+        orderByValue: orderValue, equalToId: equalID);
+    if (lessons is List)
+      lessonsList = lessons;
+    else {
       print(lessons.toString());
     }
     await Future.delayed(Duration(seconds: 2));
@@ -75,6 +72,8 @@ class TableViewModel extends BaseModel {
   }
 
   void navigateToTasks(Lesson lesson) {
-    _navigationService.navigateTo(CreateTaskViewRoute,arguments: lesson);
+    if (checkIsTeacher()) {
+      _navigationService.navigateTo(CreateTaskViewRoute, arguments: lesson);
+    }
   }
 }

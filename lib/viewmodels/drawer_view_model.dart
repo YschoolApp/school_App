@@ -24,9 +24,18 @@ class DrawerViewModel extends BaseModel {
     await _navigationService.routeToUserMainScreen(currentUser.userRole);
   }
 
+  Future navigateToClaim() async {
+    await _navigationService.pop();
+    await _navigationService.navigateTo(SendClaimViewRoute);
+  }
+
+  Future navigateToTableView() async {
+    await _navigationService.pop();
+    await _navigationService.navigateTo(TableViewRoute);
+  }
+
   Future navigateToTasksView() async {
     await _navigationService.pop();
     await _navigationService.navigateTo(TasksViewRoute);
   }
-
 }

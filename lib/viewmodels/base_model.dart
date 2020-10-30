@@ -11,6 +11,10 @@ class BaseModel extends ChangeNotifier {
 
   MyUser get currentUser => _authenticationService.currentUser;
 
+ bool checkIsTeacher(){
+    return currentUser.userRole.toLowerCase() == 'teacher';
+  }
+
   bool _busy = false;
   bool get busy => _busy;
 
@@ -28,6 +32,7 @@ class BaseModel extends ChangeNotifier {
       return true;
     }
   }
+
 
   
 

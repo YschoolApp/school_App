@@ -1,4 +1,5 @@
 import 'package:school_app/models/subject_model.dart';
+import 'package:school_app/models/task.dart';
 import 'package:school_app/ui/views/create_task_view.dart';
 import 'package:school_app/ui/views/table_view.dart';
 import 'package:school_app/ui/views/tasks_of_subject_view.dart';
@@ -44,9 +45,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         viewToShow: TableView(),
       );
     case TasksViewRoute:
+        Task task = settings.arguments ;
       return _getPageRoute(
         routeName: settings.name,
-        viewToShow: TasksView(),
+        viewToShow: TasksView(task: task,),
       );
     case CreateTaskViewRoute:
       // var taskToEdit = settings.arguments as Task;

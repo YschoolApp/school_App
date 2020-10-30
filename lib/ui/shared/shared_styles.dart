@@ -28,3 +28,19 @@ const kBottomSheetDecoration = BoxDecoration(
     topRight: const Radius.circular(16.0),
   ),
 );
+
+
+BoxDecoration kBoxDecorationWithRadiusAndShadow = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.only(
+    bottomRight: Radius.circular(30),
+    bottomLeft: Radius.circular(30),
+  ),
+  boxShadow: [
+    BoxShadow(
+      color: Colors.black26,
+      offset: Offset(0.0, 5.0),
+      blurRadius: 4.0,
+    ),
+  ],
+);

@@ -1,8 +1,6 @@
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:hive/hive.dart';
-import 'package:school_app/utils/local_notification_set.dart';
 
 import '../locator.dart';
 import 'navigation_service.dart';

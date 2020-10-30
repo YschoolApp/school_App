@@ -48,6 +48,7 @@ dependencies:
   provider: ^4.3.2+2
   readmore: ^1.0.0
   stacked: ^1.7.6
+  auto_size_text: ^2.1.0
 #  json_table: ^1.4.0
 #  horizontal_data_table: ^1.0.6+3
 #  table_sticky_headers: ^1.1.2
@@ -76,3 +77,4 @@ flutter:
 #    - family: Cairo
 #      fonts:
 #        - asset: assets/fonts/Cairo-Regular.ttf
+
