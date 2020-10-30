@@ -13,7 +13,10 @@ class TasksOfSubjectView extends SingleWidgetChild {
 
   @override
   String appBarTitle() {
-    return 'Tasks of ${subject.name}';
+    if(subject != null){
+       return 'Tasks of ${subject.name}';
+    }
+    return 'All Tasks';
   }
 
   @override
@@ -48,13 +51,13 @@ class TasksOfSubjectView extends SingleWidgetChild {
                         },
                         child: TaskItemTemplate(
                           isTeacher: model.checkIsTeacher(),
-                          subjectName: subject?.name,
                           task: task,
                         ),
                       ),
                     );
                   } else {
                     return Padding(
+                      
                       padding: EdgeInsets.symmetric(vertical: 32.0),
                       child: Center(
                         child: Text('no more item'),

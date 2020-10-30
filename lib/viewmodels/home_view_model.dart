@@ -12,7 +12,7 @@ class HomeViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
 
   navigateToTasksScreen() {
-    _navigationService.navigateTo(TasksViewRoute);
+    _navigationService.navigateTo(TasksOfSubjectViewRout);
   }
 
 

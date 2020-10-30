@@ -12,6 +12,7 @@ class TableViewModel extends BaseModel {
 
   // final TaskFireStoreService _firestoreService =
   // locator<TaskFireStoreService>();
+  
   final DialogService _dialogService = locator<DialogService>();
 
   // final CloudStorageService _cloudStorageService =

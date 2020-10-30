@@ -9,14 +9,12 @@ import 'cashed_image_widget.dart';
 class TaskItemTemplate extends StatelessWidget {
   final Task task;
   final Function onDeleteItem;
-  final String subjectName;
   final isTeacher;
 
   const TaskItemTemplate({
     Key key,
     this.task,
     this.onDeleteItem,
-    this.subjectName,
     @required this.isTeacher,
   }) : super(key: key);
 
@@ -56,7 +54,7 @@ class TaskItemTemplate extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
-                      Text(task.subjectName ?? subjectName),
+                      Text(task.subjectName),
                       Text(task.taskTitle ?? ''),
                       AutoSizeText(
                         task.taskContent ?? '',

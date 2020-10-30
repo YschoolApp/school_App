@@ -34,10 +34,12 @@ class TasksOfSubjectViewModel extends BaseModel {
   }
 
   getTaskOfSubject({String subjectID}) async {
+    String equalTo = checkIsTeacher()? currentUser.id: currentUser.classId;
+    String orderBy = checkIsTeacher()? 'teacherId': 'classId';
     try {
       _tasksCollectionReference
-          .orderByChild('classId')
-          .equalTo(currentUser.classId)
+          .orderByChild(orderBy)
+          .equalTo(equalTo)
           .onValue
           .listen((event) {
         tasksList = List<Task>();
