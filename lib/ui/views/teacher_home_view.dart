@@ -35,14 +35,14 @@ class TeacherHomeView extends SingleWidgetChild {
             ],
             children: [
               CardTemplate(
-                iconData: FontAwesomeIcons.bookReader,
+                iconData: FontAwesomeIcons.tasks,
                 text: AppLocalizations.of(context).translate(kfTasks),
                 onTap: () {
                   model.navigateToTasksScreen();
                 },
               ),
               CardTemplate(
-                iconData: FontAwesomeIcons.bookOpen,
+                iconData: FontAwesomeIcons.table,
                 text: AppLocalizations.of(context).translate(kfTable),
                 onTap: () {
                   model.navigateToTableScreen();
