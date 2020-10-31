@@ -18,7 +18,6 @@ class CreateTaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ViewModelBuilder<CreateTaskViewModel>.reactive(
       viewModelBuilder: () => CreateTaskViewModel(),
       onModelReady: (model) {
@@ -91,7 +90,7 @@ class CreateTaskView extends StatelessWidget {
                                             .currentState.value.length >=
                                         3) {
                                       return 'photo must be 3 or less';
-                                    }else{
+                                    } else {
                                       return null;
                                     }
                                   }
@@ -149,9 +148,7 @@ class CreateTaskView extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColor,
     );
   }
-  
 }
-
 
 // Visibility(
 //     visible:

@@ -92,4 +92,9 @@ class TasksOfSubjectViewModel extends BaseModel {
   navigatetoTaskView(Task task){
     _navigationService.navigateTo(TasksViewRoute,arguments: task);
   }
+
+
+  navigatetoCreateTaskView(){
+    _navigationService.navigateTo(CreateTaskViewRoute);
+  }
 }

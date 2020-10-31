@@ -13,8 +13,8 @@ class TasksOfSubjectView extends SingleWidgetChild {
 
   @override
   String appBarTitle() {
-    if(subject != null){
-       return 'Tasks of ${subject.name}';
+    if (subject != null) {
+      return 'Tasks of ${subject.name}';
     }
     return 'All Tasks';
   }
@@ -26,6 +26,12 @@ class TasksOfSubjectView extends SingleWidgetChild {
       onModelReady: (model) => model.startGettingData(id: subject?.id),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.grey.shade200,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: (){
+            model.navigatetoCreateTaskView();
+          },
+        ),
         body: StreamBuilder(
           stream: model.getStream(),
           builder: (BuildContext _context, AsyncSnapshot _snapshot) {
@@ -57,7 +63,6 @@ class TasksOfSubjectView extends SingleWidgetChild {
                     );
                   } else {
                     return Padding(
-                      
                       padding: EdgeInsets.symmetric(vertical: 32.0),
                       child: Center(
                         child: Text('no more item'),

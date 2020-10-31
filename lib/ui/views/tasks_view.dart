@@ -32,7 +32,7 @@ class TasksView extends SingleWidgetChild {
       body: ViewModelBuilder<TasksViewModel>.reactive(
         viewModelBuilder: () => TasksViewModel(),
         onModelReady: (model) =>
-            model.setTaskAsRead(subjectName:task.subjectName, taskId:task.taskId),
+            model.setTaskAsRead(subjectName:task?.subjectName, taskId:task.taskId),
         builder: (context, model, child) => SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal:8.0,vertical: 8.0),
           child: Column(

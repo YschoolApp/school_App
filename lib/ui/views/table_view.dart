@@ -68,6 +68,9 @@ class TableView extends StatelessWidget {
   }
 
     Text buildStudentText(Lesson toShow) {
+
+
+      
     return Text(
       toShow != null ? '${toShow?.subjectName}' : '-',
       textAlign: TextAlign.center,
