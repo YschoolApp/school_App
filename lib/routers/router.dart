@@ -1,5 +1,6 @@
 import 'package:school_app/models/subject_model.dart';
 import 'package:school_app/models/task.dart';
+import 'package:school_app/models/relation.dart';
 import 'package:school_app/ui/views/create_task_view.dart';
 import 'package:school_app/ui/views/table_view.dart';
 import 'package:school_app/ui/views/tasks_of_subject_view.dart';
@@ -77,11 +78,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
       );
     case ChildrenOfParentViewRout:
-      Subject subj = settings.arguments;
+      Relation parent = settings.arguments;
       return _getPageRoute(
         routeName: settings.name,
         viewToShow: ChildrenOfParentView(
-
+          parent: parent,
         ),
       );
     default:
