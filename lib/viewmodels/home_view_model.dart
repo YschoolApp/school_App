@@ -15,12 +15,16 @@ class HomeViewModel extends BaseModel {
     _navigationService.navigateTo(TasksOfSubjectViewRout);
   }
 
-
+  navigateToChildrenScreen() {
+    _navigationService.navigateTo(ChildrenOfParentViewRout);
+  }
   navigateToTableScreen() {
     _navigationService.navigateTo(TableViewRoute);
   }
 
-  
+
+
+
 
 
 }

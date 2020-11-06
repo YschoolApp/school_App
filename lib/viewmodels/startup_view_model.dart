@@ -23,7 +23,8 @@ class StartUpViewModel extends BaseModel {
 
     if (hasLoggedInUser) {
       if (currentUser.userRole.toLowerCase() != 'teacher') {
-        registerSubscription();
+        if(currentUser.userRole.toLowerCase() != 'parent')
+          registerSubscription();
       }
       _navigationService.routeToUserMainScreen(currentUser.userRole);
     } else {
@@ -37,5 +38,6 @@ class StartUpViewModel extends BaseModel {
       _pushNotificationService
           .subscribeToTopicNotification(currentUser.classId);
     }
+
   }
 }

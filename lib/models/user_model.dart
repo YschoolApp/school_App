@@ -1,12 +1,12 @@
 class MyUser {
-  final String id;
-  final String userFullName;
-  final String userEmail;
-  final String userPhone;
-  final String userAddress;
-  final String userRole;
-  final bool isActivate;
-  final String classId;
+   String id;
+   String userFullName;
+   String userEmail;
+   String userPhone;
+   String userAddress;
+   String userRole;
+   bool isActivate;
+   String classId;
 
   MyUser({this.id,
     this.userFullName,
@@ -29,14 +29,18 @@ class MyUser {
         isActivate = data['isActivate'],
         userPhone = data['userPhone'];
 
-  // MyUser.fromJson(Map<String, dynamic> data)
-  //     : id = data['id'],
-  //       userFullName = data['userFullName'],
-  //       userEmail = data['userEmail'],
-  //       userRole = data['userRole'],
-  //       userAddress = data['userAddress'],
-  //       isActivate = data['isActivate'],
-  //       userPhone = data['userPhone'];
+   factory MyUser.fromMap(Map map,String docID) {
+     return new MyUser(
+       userFullName: map['userFullName'] as String,
+       userEmail: map['userEmail'] as String,
+       userRole: map['userRole'] as String,
+       classId: map['classId'] as String,
+       userAddress: map['userAddress'] as String,
+       isActivate: map['isActivate'] as bool,
+       userPhone: map['userPhone'] as String,
+       id: docID,
+     );
+   }
 
   Map<String, dynamic> toJson() {
     return {

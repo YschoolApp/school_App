@@ -36,13 +36,19 @@ class AppDrawer extends StatelessWidget {
                     })
                 : SizedBox.shrink(),
             _divider,
-            _createDrawerItem(
-              text: 'View Table',
-              icon: FontAwesomeIcons.table,
-              onTap: (){
-                model.navigateToTableView();
-              }
-            ),
+            model.checkIsParent()
+                ? _createDrawerItem(
+                    text: "Add Child",
+                    icon: FontAwesomeIcons.table,
+                    onTap: () {
+                      model.navigatetoAddChildView();
+                    })
+                : _createDrawerItem(
+                    text: 'View Table',
+                    icon: FontAwesomeIcons.table,
+                    onTap: () {
+                      model.navigateToTableView();
+                    }),
             _divider,
             _createDrawerItem(
                 icon: FontAwesomeIcons.comment,

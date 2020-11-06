@@ -40,6 +40,7 @@ const String kfTeacher= "teacher";
 const String kfHome= "home";
 const String kfTable= "table";
 const String kfTasks= "tasks";
+const String kfChild= "child";
 const String kfDays= "days";
 const String kfSubject = 'subject';
 const String kfContent = 'task_content';

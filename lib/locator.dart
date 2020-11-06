@@ -1,8 +1,10 @@
 import 'package:school_app/services/authentication_service.dart';
+import 'package:school_app/services/child_fire_store_service.dart';
 import 'package:school_app/services/cloud_storage_service.dart';
 import 'package:school_app/services/dialog_service.dart';
 import 'package:school_app/services/user_firestore_service.dart';
 import 'package:school_app/services/lessons_service.dart';
+import 'package:school_app/services/children_service.dart';
 import 'package:school_app/services/navigation_service.dart';
 import 'package:school_app/services/task_fire_store_services.dart';
 import 'package:school_app/services/push_notification_service.dart';
@@ -20,6 +22,8 @@ void setupLocator() {
   locator.registerLazySingleton(() => AuthenticationService());
   locator.registerLazySingleton(() => UserFireStoreService());
   locator.registerLazySingleton(() => TaskFireStoreService());
+  locator.registerLazySingleton(() => ChildrenService());
+  locator.registerLazySingleton(() => ChildFireStoreService());
   locator.registerLazySingleton(() => LessonsService());
   locator.registerLazySingleton(() => CloudStorageService());
   locator.registerLazySingleton(() => PushNotificationService());

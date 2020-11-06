@@ -38,4 +38,11 @@ class DrawerViewModel extends BaseModel {
     await _navigationService.pop();
     await  _navigationService.navigateTo(TasksOfSubjectViewRout);
   }
+
+
+  Future navigatetoAddChildView() async {
+    await _navigationService.pop();
+    await  _navigationService.navigateTo(AddChildViewRoute);
+  }
+
 }
