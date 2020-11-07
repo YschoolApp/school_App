@@ -1,6 +1,7 @@
 import 'package:school_app/models/subject_model.dart';
 import 'package:school_app/models/task.dart';
 import 'package:school_app/models/relation.dart';
+import 'package:school_app/ui/views/copy_id.dart';
 import 'package:school_app/ui/views/create_task_view.dart';
 import 'package:school_app/ui/views/table_view.dart';
 import 'package:school_app/ui/views/tasks_of_subject_view.dart';
@@ -10,6 +11,7 @@ import 'package:school_app/ui/views/teacher_home_view.dart';
 import 'package:school_app/ui/views/student_home_view.dart';
 import 'package:school_app/ui/views/add_child_view.dart';
 import 'package:school_app/ui/views/parent_home_view.dart';
+import 'package:school_app/ui/views/child_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:school_app/ui/views/login_view.dart';
 import 'package:school_app/ui/views/signup_view.dart';
@@ -77,12 +79,30 @@ Route<dynamic> generateRoute(RouteSettings settings) {
          subject: subj,
         ),
       );
+
+    case ViewStudentIdViewRoute:
+      String childId = settings.arguments;
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: CopyStudentIdView(
+         // id: childId,
+        ),
+      );
     case ChildrenOfParentViewRout:
       Relation parent = settings.arguments;
       return _getPageRoute(
         routeName: settings.name,
         viewToShow: ChildrenOfParentView(
           parent: parent,
+        ),
+      );
+
+    case ChildHomeViewRoute:
+      Relation relation = settings.arguments;
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: ChildHomeView(
+          relation: relation,
         ),
       );
     default:

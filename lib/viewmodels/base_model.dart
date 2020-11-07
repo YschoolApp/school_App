@@ -20,6 +20,12 @@ class BaseModel extends ChangeNotifier {
     return currentUser.userRole.toLowerCase() == 'parent';
   }
 
+  bool checkIsStudent(){
+    return currentUser.userRole.toLowerCase() == 'student';
+  }
+
+
+
 
 
   bool _busy = false;

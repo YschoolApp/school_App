@@ -26,12 +26,12 @@ class TasksOfSubjectView extends SingleWidgetChild {
       onModelReady: (model) => model.startGettingData(id: subject?.id),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.grey.shade200,
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: model.checkIsTeacher()?FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: (){
             model.navigatetoCreateTaskView();
           },
-        ),
+        ):SizedBox.shrink(),
         body: StreamBuilder(
           stream: model.getStream(),
           builder: (BuildContext _context, AsyncSnapshot _snapshot) {

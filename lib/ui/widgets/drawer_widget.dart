@@ -35,6 +35,23 @@ class AppDrawer extends StatelessWidget {
                       model.navigateToTasksView();
                     })
                 : SizedBox.shrink(),
+            model.checkIsStudent()
+                ? _createDrawerItem(
+                icon: Icons.book,
+                text: 'View ID',
+                onTap: () {
+                  model.navigateToViewIDView();
+                })
+                : SizedBox.shrink(),
+
+            model.checkIsParent()
+                ? _createDrawerItem(
+                icon: Icons.book,
+                text: 'View student',
+                onTap: () {
+                  model.navigateToChildHomeView();
+                })
+                : SizedBox.shrink(),
             _divider,
             model.checkIsParent()
                 ? _createDrawerItem(
@@ -70,7 +87,7 @@ class AppDrawer extends StatelessWidget {
   }
 
   Widget _createHeader(BuildContext context, String userName, String userEmail,
-      String userImage) {
+      String userImage ) {
     return UserAccountsDrawerHeader(
       decoration: BoxDecoration(
         image: DecorationImage(

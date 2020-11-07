@@ -24,6 +24,18 @@ class DrawerViewModel extends BaseModel {
     await _navigationService.routeToUserMainScreen(currentUser.userRole);
   }
 
+
+  Future navigateToStudentHomeView() async {
+    await _navigationService.pop();
+    await _navigationService.navigateTo(StudentHomeViewRoute);
+  }
+
+  Future navigateToChildHomeView() async {
+    await _navigationService.pop();
+    await _navigationService.navigateTo(ChildHomeViewRoute);
+  }
+
+
   Future navigateToClaim() async {
     await _navigationService.pop();
     await _navigationService.navigateTo(SendClaimViewRoute);
@@ -43,6 +55,12 @@ class DrawerViewModel extends BaseModel {
   Future navigatetoAddChildView() async {
     await _navigationService.pop();
     await  _navigationService.navigateTo(AddChildViewRoute);
+  }
+
+
+  Future navigateToViewIDView() async {
+    await _navigationService.pop();
+    await  _navigationService.navigateTo(ViewStudentIdViewRoute);
   }
 
 }

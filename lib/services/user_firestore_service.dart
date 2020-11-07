@@ -58,7 +58,51 @@ class UserFireStoreService {
     }
   }
 
-  // Future createUser(MyUser user) async {
+
+  String getUserName(String uid)  {
+    try {
+
+      var userData =  _usersCollectionReference.child(uid).once();
+
+      return userData.asStream().first.toString();
+
+    } catch (e) {
+      // TODO: Find or create a way to repeat error handling without so much repeated code
+      if (e is PlatformException) {
+        print('========= e is PlatformException ========');
+        print(e.message.toString());
+        return e.message;
+      }
+      print('======== e =========');
+      print(e.toString());
+      return e.toString();
+    }
+  }
+
+
+
+  String getClassId(String uid)  {
+    try {
+
+      var userData =  _usersCollectionReference.child(uid).once();
+
+      return userData.asStream().first.toString();
+
+    } catch (e) {
+      // TODO: Find or create a way to repeat error handling without so much repeated code
+      if (e is PlatformException) {
+        print('========= e is PlatformException ========');
+        print(e.message.toString());
+        return e.message;
+      }
+      print('======== e =========');
+      print(e.toString());
+      return e.toString();
+    }
+  }
+
+
+// Future createUser(MyUser user) async {
   //   try {
   //     await _usersCollectionReference.doc(user.id).set(user.toJson());
   //   } catch (e) {
@@ -83,4 +127,5 @@ class UserFireStoreService {
   //     return e.toString();
   //   }
   // }
+
 }

@@ -17,6 +17,7 @@ class MyUser {
     this.isActivate = false,
     this.userPhone});
 
+
   //when using real time it does not return Map<String, dynamic>
   //so we have to pass any Map
   MyUser.fromJson(Map data)
@@ -53,4 +54,6 @@ class MyUser {
       'classId':classId
     };
   }
+
+
 }
