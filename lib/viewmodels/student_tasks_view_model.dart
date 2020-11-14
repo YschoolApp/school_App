@@ -72,10 +72,10 @@ class StudentHomeViewModel extends BaseModel {
   }
 
   openBoxes()async{
+
     print(subjectsList.length.toString());
      subjectsList.forEach((element) async {
       await Hive.openBox(element.name);
-
     });
   }
 
